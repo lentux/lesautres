@@ -1,0 +1,3 @@
+lesautres_site:
+    resource: "@LesAutresSiteBundle/Resources/config/routing.yml"
+    prefix:   /
