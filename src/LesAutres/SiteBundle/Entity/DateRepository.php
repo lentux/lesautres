@@ -12,4 +12,40 @@ use Doctrine\ORM\EntityRepository;
  */
 class DateRepository extends EntityRepository
 {
+    public function getToday()
+    {
+        return new \DateTime();
+    }
+    
+    
+    
+    public function getDatesForDay($day, $month, $year)
+    {
+        $date1 = new \DateTime($year."-".$month."-".$day." 00:00:00");
+        $date2 = new \DateTime($year."-".$month."-".($day+1)." 00:00:00");
+        $query = $this->createQueryBuilder('d')
+            ->where('d.date >= :date1 and d.date < :date2')
+            ->setParameter('date1', $date1)
+            ->setParameter('date2', $date2)
+            ->orderBy('d.date', 'ASC')
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
+    
+    
+    
+    public function getNextDates($limit = 10)
+    {
+        $query = $this->createQueryBuilder('d')
+            ->where('d.date >= :now')
+            ->setParameter('now', $this->getToday())
+            ->orderBy('d.date', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
 }

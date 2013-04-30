@@ -1,0 +1,11 @@
+{% extends 'LesAutresSiteBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {{ page.text|raw }}
+    <ul>
+    {% for show in page.shows %}
+        <li><a href="{{ path('show', {'slug': show.slug}) }}">{{ show }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
