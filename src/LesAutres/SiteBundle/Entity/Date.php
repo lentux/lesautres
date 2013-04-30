@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="date")
+ * @ORM\Table(name="dates")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\DateRepository")
  */
 class Date
@@ -56,7 +56,11 @@ class Date
     
     public function __toString()
     {
-        return $this->date;
+        return (
+            $this->date ?
+            date('l j F Y, H\hi', $this->date->getTimestamp()) :
+            "Nouvelle date"
+        );
     }
     
     

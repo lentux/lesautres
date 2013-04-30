@@ -88,16 +88,36 @@ sonata_admin:
             - { position: left, type: sonata.admin.block.admin_list }
 
 services:
-    sonata_admin_page:
-        class:   LesAutres\SiteBundle\Admin\PageAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Tables, label: Pages }
-        arguments:   [ null, LesAutres\SiteBundle\Entity\Page, SonataAdminBundle:CRUD ]
     sonata_admin_user:
         class:   LesAutres\SiteBundle\Admin\UserAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: Tables, label: Utilisateurs }
         arguments:   [ null, LesAutres\SiteBundle\Entity\User, SonataAdminBundle:CRUD ]
+    sonata_admin_page:
+        class:   LesAutres\SiteBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Pages }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\Page, SonataAdminBundle:CRUD ]
+    sonata_admin_show:
+        class:   LesAutres\SiteBundle\Admin\ShowAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Spectacles }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\Show, SonataAdminBundle:CRUD ]
+    sonata_admin_event:
+        class:   LesAutres\SiteBundle\Admin\EventAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Événements }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\Event, SonataAdminBundle:CRUD ]
+    sonata_admin_date:
+        class:   LesAutres\SiteBundle\Admin\DateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Dates }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\Date, SonataAdminBundle:CRUD ]
+    sonata_admin_place:
+        class:   LesAutres\SiteBundle\Admin\PlaceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Lieux }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\Place, SonataAdminBundle:CRUD ]
 
 sonata_block:
     default_contexts: [cms]

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="place")
+ * @ORM\Table(name="places")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\PlaceRepository")
  */
 class Place
@@ -88,7 +88,11 @@ class Place
     
     public function __toString()
     {
-        return $this->name;
+        return (
+            $this->name ?
+            $this->name :
+            "Nouveau lieu"
+        );
     }
     
     

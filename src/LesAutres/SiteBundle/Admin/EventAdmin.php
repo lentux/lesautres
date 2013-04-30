@@ -8,39 +8,41 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class UserAdmin extends Admin
+class EventAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        ///$this->getConfigurationPool()->getContainer()->get('doctrine');
         $formMapper
             ->add(
-                'username',
-                'text',
+                'show',
+                'entity',
                 array(
-                    'label'  => "Identifiant",
+                    'class' => 'LesAutresSiteBundle:Show',
+                    'query_builder' => function($repository) { return $repository->createQueryBuilder('s')->orderBy('s.id', 'ASC'); },
+                    'label'  => "Spectacle",
                 )
             )
             ->add(
-                'firstname',
-                'text',
+                'place',
+                'entity',
                 array(
-                    'label'  => "Prénom",
+                    'class' => 'LesAutresSiteBundle:Place',
+                    'query_builder' => function($repository) { return $repository->createQueryBuilder('p')->orderBy('p.id', 'ASC'); },
+                    'label'  => "Lieu",
                 )
             )
             ->add(
-                'lastname',
-                'text',
+                'dates',
+                'sonata_type_collection',
                 array(
-                    'label'  => "Nom",
-                )
-            )
-            ->add(
-                'email',
-                'email',
+                    'label'  => "Dates",
+                ),
                 array(
-                    'label' => "Email"
+                    'edit' => 'inline',
+                    'inline' => 'table',
                 )
             )
         ;
@@ -50,31 +52,17 @@ class UserAdmin extends Admin
     {
         $datagridMapper
             ->add(
-                'username',
+                'show',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Spectacle",
                 )
             )
             ->add(
-                'firstname',
+                'place',
                 null,
                 array(
-                    'label' => "Prénom"
-                )
-            )
-            ->add(
-                'lastname',
-                null,
-                array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Lieu",
                 )
             )
         ;
@@ -84,31 +72,24 @@ class UserAdmin extends Admin
     {
         $listMapper
             ->add(
-                'username',
+                'show',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Spectacle",
                 )
             )
             ->add(
-                'firstname',
+                'place',
                 null,
                 array(
-                    'label' => "Prénom"
+                    'label'  => "Lieu",
                 )
             )
             ->add(
-                'lastname',
+                'dates',
                 null,
                 array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Dates",
                 )
             )
             ->add(
@@ -129,31 +110,24 @@ class UserAdmin extends Admin
     {
         $showMapper
             ->add(
-                'username',
+                'show',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Spectacle",
                 )
             )
             ->add(
-                'firstname',
+                'place',
                 null,
                 array(
-                    'label' => "Prénom"
+                    'label'  => "Lieu",
                 )
             )
             ->add(
-                'lastname',
+                'dates',
                 null,
                 array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Dates",
                 )
             )
         ;

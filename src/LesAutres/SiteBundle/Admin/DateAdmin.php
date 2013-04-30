@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PageAdmin extends Admin
+class DateAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
 
@@ -16,31 +16,19 @@ class PageAdmin extends Admin
     {
         $formMapper
             ->add(
-                'title',
-                'text',
+                'event',
+                'entity',
                 array(
-                    'label'  => "Titre",
+                    'class' => 'LesAutresSiteBundle:Event',
+                    'query_builder' => function($repository) { return $repository->createQueryBuilder('e')->orderBy('e.id', 'ASC'); },
+                    'label'  => "Événement",
                 )
             )
             ->add(
-                'slug',
-                'text',
+                'date',
+                'datetime',
                 array(
-                    'label'  => "Slug",
-                )
-            )
-            ->add(
-                'summary',
-                'textarea',
-                array(
-                    'label'  => "Résumé",
-                )
-            )
-            ->add(
-                'text',
-                'textarea',
-                array(
-                    'label'  => "Texte",
+                    'label'  => "Date",
                 )
             )
         ;
@@ -50,10 +38,17 @@ class PageAdmin extends Admin
     {
         $datagridMapper
             ->add(
-                'title',
+                'event',
                 null,
                 array(
-                    'label'  => "Titre",
+                    'label'  => "Événement",
+                )
+            )
+            ->add(
+                'date',
+                null,
+                array(
+                    'label'  => "Date",
                 )
             )
         ;
@@ -63,17 +58,17 @@ class PageAdmin extends Admin
     {
         $listMapper
             ->add(
-                'title',
+                'event',
                 null,
                 array(
-                    'label'  => "Titre",
+                    'label'  => "Événement",
                 )
             )
             ->add(
-                'author',
+                'date',
                 null,
                 array(
-                    'label'  => "Auteur",
+                    'label'  => "Date",
                 )
             )
             ->add(
@@ -94,38 +89,17 @@ class PageAdmin extends Admin
     {
         $showMapper
             ->add(
-                'title',
+                'event',
                 null,
                 array(
-                    'label'  => "Titre",
+                    'label'  => "Événement",
                 )
             )
             ->add(
-                'author',
+                'date',
                 null,
                 array(
-                    'label'  => "Auteur",
-                )
-            )
-            ->add(
-                'summary',
-                null,
-                array(
-                    'label'  => "Résumé",
-                )
-            )
-            ->add(
-                'text',
-                null,
-                array(
-                    'label'  => "Texte",
-                )
-            )
-            ->add(
-                'shows',
-                null,
-                array(
-                    'label'  => "Spectacles",
+                    'label'  => "Date",
                 )
             )
         ;

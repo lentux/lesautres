@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="event")
+ * @ORM\Table(name="events")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\EventRepository")
  */
 class Event
@@ -42,7 +42,7 @@ class Event
     protected $place;
 
     /**
-     * @ORM\OneToMany(targetEntity="Date", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Date", mappedBy="event", cascade={"persist", "remove"})
      */
     protected $dates;
     
@@ -64,7 +64,11 @@ class Event
     
     public function __toString()
     {
-        return $this->title;
+        return (
+            $this->id ?
+            "Événement ".$this->id :
+            "Nouvel événement"
+        );
     }
     
     

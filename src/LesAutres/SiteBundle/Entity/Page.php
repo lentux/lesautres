@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="page")
+ * @ORM\Table(name="pages")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\PageRepository")
  */
 class Page
@@ -77,7 +77,11 @@ class Page
     
     public function __toString()
     {
-        return $this->title;
+        return (
+            $this->title ?
+            $this->title :
+            "Nouvelle page"
+        );
     }
     
     

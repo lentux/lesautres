@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Les\AutresBundle\Entity\User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable
@@ -97,7 +97,11 @@ class User implements UserInterface, \Serializable
     
     public function __toString()
     {
-        return $this->firstname." ".$this->lastname;
+        return (
+            $this->username ?
+            $this->firstname." ".$this->lastname :
+            "Nouvel utilisateur"
+        );
     }
     
     

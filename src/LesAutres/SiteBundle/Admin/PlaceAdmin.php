@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class UserAdmin extends Admin
+class PlaceAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
 
@@ -16,31 +16,55 @@ class UserAdmin extends Admin
     {
         $formMapper
             ->add(
-                'username',
-                'text',
-                array(
-                    'label'  => "Identifiant",
-                )
-            )
-            ->add(
-                'firstname',
-                'text',
-                array(
-                    'label'  => "Prénom",
-                )
-            )
-            ->add(
-                'lastname',
+                'name',
                 'text',
                 array(
                     'label'  => "Nom",
                 )
             )
             ->add(
-                'email',
-                'email',
+                'slug',
+                'text',
                 array(
-                    'label' => "Email"
+                    'label'  => "Slug",
+                )
+            )
+            ->add(
+                'description',
+                'textarea',
+                array(
+                    'label'  => "Description",
+                )
+            )
+            ->add(
+                'street',
+                'text',
+                array(
+                    'label'  => "Adresse",
+                )
+            )
+            ->add(
+                'zipcode',
+                'number',
+                array(
+                    'label'  => "Code postal",
+                )
+            )
+            ->add(
+                'city',
+                'text',
+                array(
+                    'label'  => "Ville",
+                )
+            )
+            ->add(
+                'departement',
+                'entity',
+                array(
+                    'class' => 'LesAutresSiteBundle:Departement',
+                    'query_builder' => function($repository) { return $repository->createQueryBuilder('d')->orderBy('d.id', 'ASC'); },
+                    'preferred_choices' => $this->modelManager->findBy('LesAutres\SiteBundle\Entity\Departement', array('number' => '84')),
+                    'label'  => "Département",
                 )
             )
         ;
@@ -50,31 +74,10 @@ class UserAdmin extends Admin
     {
         $datagridMapper
             ->add(
-                'username',
+                'name',
                 null,
                 array(
-                    'label' => "Identifiant"
-                )
-            )
-            ->add(
-                'firstname',
-                null,
-                array(
-                    'label' => "Prénom"
-                )
-            )
-            ->add(
-                'lastname',
-                null,
-                array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Nom",
                 )
             )
         ;
@@ -84,31 +87,10 @@ class UserAdmin extends Admin
     {
         $listMapper
             ->add(
-                'username',
+                'name',
                 null,
                 array(
-                    'label' => "Identifiant"
-                )
-            )
-            ->add(
-                'firstname',
-                null,
-                array(
-                    'label' => "Prénom"
-                )
-            )
-            ->add(
-                'lastname',
-                null,
-                array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Nom",
                 )
             )
             ->add(
@@ -129,31 +111,45 @@ class UserAdmin extends Admin
     {
         $showMapper
             ->add(
-                'username',
+                'name',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Nom",
                 )
             )
             ->add(
-                'firstname',
+                'description',
                 null,
                 array(
-                    'label' => "Prénom"
+                    'label'  => "Description",
                 )
             )
             ->add(
-                'lastname',
+                'street',
                 null,
                 array(
-                    'label' => "Nom"
+                    'label'  => "Adresse",
                 )
             )
             ->add(
-                'email',
+                'zipcode',
                 null,
                 array(
-                    'label' => "Email"
+                    'label'  => "Code postal",
+                )
+            )
+            ->add(
+                'city',
+                null,
+                array(
+                    'label'  => "Ville",
+                )
+            )
+            ->add(
+                'departement',
+                null,
+                array(
+                    'label'  => "Département",
                 )
             )
         ;

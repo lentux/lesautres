@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="departement")
+ * @ORM\Table(name="departements")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\DepartementRepository")
  */
 class Departement
@@ -50,7 +50,7 @@ class Departement
     
     public function __toString()
     {
-        return $this->name." (".$this->number.")";
+        return $this->number." - ".$this->name;
     }
     
     

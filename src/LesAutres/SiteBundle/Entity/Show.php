@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="show")
+ * @ORM\Table(name="shows")
  * @ORM\Entity(repositoryClass="LesAutres\SiteBundle\Entity\ShowRepository")
  */
 class Show
@@ -84,7 +84,11 @@ class Show
     
     public function __toString()
     {
-        return $this->title;
+        return (
+            $this->title ?
+            $this->title :
+            "Nouveau spectacle"
+        );
     }
     
     

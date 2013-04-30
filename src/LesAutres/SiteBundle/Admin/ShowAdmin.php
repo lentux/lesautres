@@ -8,41 +8,53 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class UserAdmin extends Admin
+class ShowAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with('Général')
             ->add(
-                'username',
+                'title',
                 'text',
                 array(
-                    'label'  => "Identifiant",
+                    'label'  => "Titre",
                 )
             )
             ->add(
-                'firstname',
+                'slug',
                 'text',
                 array(
-                    'label'  => "Prénom",
+                    'label'  => "Slug",
                 )
             )
             ->add(
-                'lastname',
+                'page',
+                'entity',
+                array(
+                    'class' => 'LesAutresSiteBundle:Page',
+                    'query_builder' => function($repository) { return $repository->createQueryBuilder('p')->orderBy('p.id', 'ASC'); },
+                    'property' => 'title',
+                    'label'  => "Page",
+                )
+            )
+            ->add(
+                'summary',
+                'textarea',
+                array(
+                    'label'  => "Résumé",
+                )
+            )
+            ->add(
                 'text',
+                'textarea',
                 array(
-                    'label'  => "Nom",
+                    'label'  => "Texte",
                 )
             )
-            ->add(
-                'email',
-                'email',
-                array(
-                    'label' => "Email"
-                )
-            )
+            ->end()
         ;
     }
 
@@ -50,31 +62,10 @@ class UserAdmin extends Admin
     {
         $datagridMapper
             ->add(
-                'username',
+                'title',
                 null,
                 array(
-                    'label' => "Identifiant"
-                )
-            )
-            ->add(
-                'firstname',
-                null,
-                array(
-                    'label' => "Prénom"
-                )
-            )
-            ->add(
-                'lastname',
-                null,
-                array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Titre",
                 )
             )
         ;
@@ -84,31 +75,24 @@ class UserAdmin extends Admin
     {
         $listMapper
             ->add(
-                'username',
+                'title',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Titre",
                 )
             )
             ->add(
-                'firstname',
+                'author',
                 null,
                 array(
-                    'label' => "Prénom"
+                    'label'  => "Auteur",
                 )
             )
             ->add(
-                'lastname',
+                'page',
                 null,
                 array(
-                    'label' => "Nom"
-                )
-            )
-            ->add(
-                'email',
-                null,
-                array(
-                    'label' => "Email"
+                    'label'  => "Page",
                 )
             )
             ->add(
@@ -129,31 +113,45 @@ class UserAdmin extends Admin
     {
         $showMapper
             ->add(
-                'username',
+                'title',
                 null,
                 array(
-                    'label' => "Identifiant"
+                    'label'  => "Titre",
                 )
             )
             ->add(
-                'firstname',
+                'author',
                 null,
                 array(
-                    'label' => "Prénom"
+                    'label'  => "Auteur",
                 )
             )
             ->add(
-                'lastname',
+                'page',
                 null,
                 array(
-                    'label' => "Nom"
+                    'label'  => "Page",
                 )
             )
             ->add(
-                'email',
+                'summary',
                 null,
                 array(
-                    'label' => "Email"
+                    'label'  => "Résumé",
+                )
+            )
+            ->add(
+                'text',
+                null,
+                array(
+                    'label'  => "Texte",
+                )
+            )
+            ->add(
+                'events',
+                null,
+                array(
+                    'label'  => "Événements",
                 )
             )
         ;
