@@ -52,15 +52,86 @@ class Date
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->date = new \DateTime();
     }
     
     public function __toString()
     {
-        return (
-            $this->date ?
-            date('l j F Y, H\hi', $this->date->getTimestamp()) :
-            "Nouvelle date"
+        return $this->getFormatedDateTime(true);
+    }
+    
+    
+    
+    
+    
+    
+    /**
+     * METHODS
+     */
+    
+    /**
+     * Retourne la date et l'heure formatées en français
+     * 
+     * @param boolean $dayofweek
+     * @return string
+     */
+    public function getFormatedDateTime($dayofweek = true)
+    {
+        return $this->getFormatedDate($dayofweek)." à ".$this->getFormatedTime();
+    }
+    
+    /**
+     * Retourne la date formatée en français
+     * 
+     * @param boolean $dayofweek
+     * @return string
+     */
+    public function getFormatedDate($dayofweek = true)
+    {
+        $timestamp = $this->date->getTimestamp();
+        
+        $daysofweek = array(
+            1 => "lundi",
+            2 => "mardi",
+            3 => "mercredi",
+            4 => "jeudi",
+            5 => "vendredi",
+            6 => "samedi",
+            7 => "dimanche",
         );
+        
+        $months = array(
+            1 => "janvier",
+            2 => "février",
+            3 => "mars",
+            4 => "avril",
+            5 => "mai",
+            6 => "juin",
+            7 => "juillet",
+            8 => "août",
+            9 => "septembre",
+            10 => "octobre",
+            11 => "novembre",
+            12 => "décembre",
+        );
+        
+        return
+            ($dayofweek ? $daysofweek[date('N', $timestamp)]." " : '').
+            date('j', $timestamp).(date('j', $timestamp) == 1 ? "er" : '')." ".
+            $months[date('n', $timestamp)]." ".
+            date('Y', $timestamp)
+        ;
+    }
+    
+    /**
+     * Retourne l'heure formatée en français
+     * 
+     * @param boolean $seconds
+     * @return string
+     */
+    public function getFormatedTime()
+    {
+        return date('H\hi', $this->date->getTimestamp());
     }
     
     

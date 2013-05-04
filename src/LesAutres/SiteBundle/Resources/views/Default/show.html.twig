@@ -3,13 +3,15 @@
 {% block content %}
     <h1>{{ title }}</h1>
     {{ show.text|raw }}
-    <h2>Prochaines dates</h2>
-    <ul>
-    {% for event in show.events %}
-        {% for date in event.dates %}
-            <li>{{ event.place }}, {{ date }}</li>
+    {% if show.events %}
+        <h2>Prochaines dates</h2>
+        <ul>
+        {% for event in show.events %}
+            {% for date in event.dates %}
+                <li>{{ event.place }}, {{ date }}</li>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-    </ul>
+        </ul>
+    {% endif %}
     <a href="{{ path('page', {'slug': show.page.slug}) }}">{{ show.page }}</a>
 {% endblock %}

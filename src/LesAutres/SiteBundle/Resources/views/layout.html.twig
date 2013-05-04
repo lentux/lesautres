@@ -5,17 +5,84 @@
         <!-- meta -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content="La Compagnie des Autres" />
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
         <title>{{ title }} - la Compagnie des Autres</title>
         
         <!-- css -->
-        <link href="/css/layout.css" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/css/main.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/css/layout.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/css/page.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/css/li-scroller.css') }}" type="text/css" rel="stylesheet" />
         
         <!-- javascript -->
+        <script src="{{ asset('/js/jquery.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/js/jquery.li-scroller.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/js/init.js') }}" type="text/javascript"></script>
         
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <div class="site">
+            
+            <!-- begin left column -->
+            <div class="leftcolumn">
+                <img src="/images/logo/logo_puzzle.png" alt="logo puzzle" class="logo" />
+                <ul class="menu">
+                    <li><a href="/accueil">Accueil</a></li>
+                    <li><a href="/theatre-forum">Théâtre forum</a></li>
+                    <li><a href="/nos-spectacles-forum">Nos spectacles forum</a></li>
+                    <li><a href="/creation-a-la-carte">Création à la carte</a></li>
+                    <li><a href="/ateliers-et-formations">Ateliers et formations</a></li>
+                    <li><a href="/autres-spectacles">Autres spectacles</a></li>
+                    <li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
+                </ul>
+                <div class="infos">
+                    <p>
+                        Le {{ today() }}
+                    </p>
+                    <p>
+                        <img src="/images/logo/logo_compagnie.jpg" alt="logo compagnie" />
+                    </p>
+                    <p>
+                        <span class="bold">PROFESSIONNELS DE&nbsp;THÉÂTRE</span><br/>
+                        77, rue Cottier<br/>
+                        84 200 Carpentras<br/>
+                    </p>
+                    <p>
+                        email
+                    </p>
+                </div>
+            </div>
+            <!-- end left column -->
+            
+            <!-- begin right column -->
+            <div class="rightcolumn">
+                <ul id="scrollingtext">
+                    <li><span>Une année Théâtre-forum qui se termine en beauté à Carpentras et Bédarrides !</span></li>
+                </ul>
+                <div class="title">
+                    <span class="bold">la Compagnie des Autres, théâtre professionnel en Provence</span><br/>
+                    <span class="italic">formation  diffusion  jeu  création  mise en scène  joker animation</span>
+                </div>
+                <div class="page">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <div class="agenda">
+                    <div class="agenda_title">NOS PROCHAINS RENDEZ-VOUS</div>
+                </div>
+                <div class="slideshow">
+                    <img src="/uploads/diaporamas/theatre-forum/forum_01.jpg" alt="forum_01.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_02.jpg" alt="forum_02.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_03.jpg" alt="forum_03.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_04.jpg" alt="forum_04.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_05.jpg" alt="forum_05.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_06.jpg" alt="forum_06.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_07.jpg" alt="forum_07.jpg" />
+                    <img src="/uploads/diaporamas/theatre-forum/forum_08.jpg" alt="forum_08.jpg" />
+                </div>
+            </div>
+            <!-- end right column -->
+            
+        </div>
     </body>
 </html>

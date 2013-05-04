@@ -2,6 +2,10 @@ homepage:
     pattern:  /
     defaults: { _controller: LesAutresSiteBundle:Default:index }
 
+admin:
+    pattern:  /admin
+    defaults: { _controller: LesAutresSiteBundle:Admin:index }
+
 page:
     pattern:  /{slug}
     defaults: { _controller: LesAutresSiteBundle:Default:page }

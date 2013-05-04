@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block sonata_admin_content %}
+<ul>
+    <li>
+        <a href="{{ path('sonata_admin_dashboard') }}">Tableau de bord (Dashboard)</a>
+    </li>
+</ul>
+{% endblock %}
