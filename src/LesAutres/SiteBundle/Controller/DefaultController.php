@@ -2,12 +2,12 @@
 
 namespace LesAutres\SiteBundle\Controller;
 
+use LesAutres\SiteBundle\Controller\LesAutresController;
 use LesAutres\SiteBundle\Entity\Page;
 use LesAutres\SiteBundle\Entity\Show;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class DefaultController extends LesAutresController
 {
     public function indexAction()
     {
@@ -59,6 +59,23 @@ class DefaultController extends Controller
             array(
                 'title' => $day."/".$month."/".$year,
                 'dates' => $dates,
+            )
+        );
+    }
+    
+    
+    
+    public function menuAction()
+    {
+        $pages = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Page')
+            ->findAll()
+        ;
+        
+        return $this->render(
+            'LesAutresSiteBundle:Default:menu.html.twig',
+            array(
+                'pages' => $pages,
             )
         );
     }

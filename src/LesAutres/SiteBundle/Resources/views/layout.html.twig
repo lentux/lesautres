@@ -26,15 +26,7 @@
             <!-- begin left column -->
             <div class="leftcolumn">
                 <img src="/images/logo/logo_puzzle.png" alt="logo puzzle" class="logo" />
-                <ul class="menu">
-                    <li><a href="/accueil">Accueil</a></li>
-                    <li><a href="/theatre-forum">Théâtre forum</a></li>
-                    <li><a href="/nos-spectacles-forum">Nos spectacles forum</a></li>
-                    <li><a href="/creation-a-la-carte">Création à la carte</a></li>
-                    <li><a href="/ateliers-et-formations">Ateliers et formations</a></li>
-                    <li><a href="/autres-spectacles">Autres spectacles</a></li>
-                    <li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
-                </ul>
+                {{ render(controller('LesAutresSiteBundle:Default:menu')) }}
                 <div class="infos">
                     <p>
                         Le {{ today() }}

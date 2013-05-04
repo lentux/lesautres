@@ -31,7 +31,7 @@ class PageAdmin extends Admin
             )
             ->add(
                 'summary',
-                'textarea',
+                'text',
                 array(
                     'label'  => "Résumé",
                 )
@@ -41,6 +41,7 @@ class PageAdmin extends Admin
                 'textarea',
                 array(
                     'label'  => "Texte",
+                    'attr' => array('class' => 'tinymce', 'tinymce'=>'{"theme":"simple"}')
                 )
             )
         ;

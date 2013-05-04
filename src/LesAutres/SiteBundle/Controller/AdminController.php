@@ -2,9 +2,9 @@
 
 namespace LesAutres\SiteBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use LesAutres\SiteBundle\Controller\LesAutresController;
 
-class AdminController extends Controller
+class AdminController extends LesAutresController
 {
     public function indexAction()
     {

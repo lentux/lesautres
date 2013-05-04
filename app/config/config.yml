@@ -75,7 +75,7 @@ sonata_admin:
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
         # default global templates
-        layout:  SonataAdminBundle::standard_layout.html.twig
+        layout:  SonataAdminBundle::lesautres_standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
         # default actions templates, should extend a global templates
@@ -150,3 +150,19 @@ knp_menu:
         template: knp_menu.html.twig
     templating: false # if true, enables the helper for PHP templates
     default_renderer: twig # The renderer to use, list is also available by default
+
+
+
+# tinymce
+stfalcon_tinymce:
+        language: fr
+        theme:
+            # Simple theme: same as default theme
+            simple:
+                content_css: "/css/page.css"
+                mode: "textareas"
+                theme: "advanced"
+                theme_advanced_buttons1: "code ,formatselect,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,undo,redo,link,unlink,outdent,indent"
+                theme_advanced_blockformats : "p,h2"
+                width: "400"
+                height: "300"

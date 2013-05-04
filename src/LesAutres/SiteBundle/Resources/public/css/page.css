@@ -1,20 +1,29 @@
 .page h1,
 .page h2,
 .page p,
-.page ul {
+.page ul,
+#tinymce h1,
+#tinymce h2,
+#tinymce p,
+#tinymce ul {
     margin: 10px;
+    font-family: Arial;
+    font-size: 12px;
 }
 
-.page h1 {
+.page h1,
+#tinymce h1 {
     font-size: 18px;
     margin-bottom: 30px;
 }
 
-.page h2 {
+.page h2,
+#tinymce h2 {
     font-size: 16px;
     margin-top: 30px;
 }
 
-.page ul li{
+.page ul li,
+#tinymce ul li {
     margin-left: 30px;
 }
