@@ -5,7 +5,7 @@
     <h1>{{ title }}</h1>
     {% if show.duration or show.actorCount or show.masterCount or show.playletCount %}
         <ul>
-            {% if show.duration %}<li>Durée : {{ formatTime(show.duration) }}</li>{% endif %}
+            {% if show.duration %}<li>Durée : {{ show.duration }}</li>{% endif %}
             {% if show.actorCount %}<li>{{ show.actorCount }} comédien{% if show.actorCount > 1 %}s{% endif %}</li>{% endif %}
             {% if show.masterCount %}<li>{{ show.masterCount }} meneur{% if show.masterCount > 1 %}s{% endif %} de jeu</li>{% endif %}
             {% if show.playletCount %}<li>{{ show.playletCount }} saynète{% if show.playletCount > 1 %}s{% endif %}</li>{% endif %}

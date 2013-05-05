@@ -40,7 +40,7 @@ class Show
     protected $text;
     
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     protected $duration;
     
