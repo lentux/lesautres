@@ -15,7 +15,6 @@ class ShowAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Général')
             ->add(
                 'title',
                 'text',
@@ -86,7 +85,6 @@ class ShowAdmin extends Admin
                     'label'  => "Texte",
                 )
             )
-            ->end()
         ;
     }
 

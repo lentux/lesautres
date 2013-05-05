@@ -3,6 +3,7 @@
 {% block content %}
     {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('show', {'slug': show.slug})}) }}
     <h1>{{ title }}</h1>
+    {% if show.summary %}<h3>{{ show.summary }}</h3>{% endif %}
     {% if show.duration or show.actorCount or show.masterCount or show.playletCount %}
         <ul>
             {% if show.duration %}<li>Durée : {{ show.duration }}</li>{% endif %}

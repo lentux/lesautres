@@ -15,6 +15,7 @@ class DefaultController extends LesAutresController
             'LesAutresSiteBundle:Default:index.html.twig',
             array(
                 'title' => "Accueil",
+                'menu_underline_slug' => "accueil",
             )
         );
     }
@@ -27,6 +28,7 @@ class DefaultController extends LesAutresController
             'LesAutresSiteBundle:Default:page.html.twig',
             array(
                 'title' => $page->getTitle(),
+                'menu_underline_slug' => $page->getSlug(),
                 'page' => $page,
             )
         );
@@ -40,6 +42,7 @@ class DefaultController extends LesAutresController
             'LesAutresSiteBundle:Default:show.html.twig',
             array(
                 'title' => $show->getTitle(),
+                'menu_underline_slug' => $show->getPage()->getSlug(),
                 'show' => $show,
             )
         );
@@ -65,7 +68,7 @@ class DefaultController extends LesAutresController
     
     
     
-    public function menuAction()
+    public function menuAction($menu_underline_slug)
     {
         $pages = $this->getDoctrine()
             ->getRepository('LesAutresSiteBundle:Page')
@@ -76,6 +79,7 @@ class DefaultController extends LesAutresController
             'LesAutresSiteBundle:Default:menu.html.twig',
             array(
                 'pages' => $pages,
+                'menu_underline_slug' => $menu_underline_slug,
             )
         );
     }

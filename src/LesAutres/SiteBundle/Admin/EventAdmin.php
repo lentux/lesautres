@@ -17,6 +17,20 @@ class EventAdmin extends Admin
         ///$this->getConfigurationPool()->getContainer()->get('doctrine');
         $formMapper
             ->add(
+                'title',
+                'text',
+                array(
+                    'label'  => "Titre",
+                )
+            )
+            ->add(
+                'description',
+                'textarea',
+                array(
+                    'label'  => "Description",
+                )
+            )
+            ->add(
                 'show',
                 'entity',
                 array(

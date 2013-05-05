@@ -26,7 +26,8 @@
             <!-- begin left column -->
             <div class="leftcolumn">
                 <img src="/images/logo/logo_puzzle.png" alt="logo puzzle" class="logo" />
-                {{ render(controller('LesAutresSiteBundle:Default:menu')) }}
+                {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
+                {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
                 <div class="infos">
                     <p>
                         Le {{ today() }}

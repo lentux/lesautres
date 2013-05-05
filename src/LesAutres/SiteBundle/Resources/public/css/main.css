@@ -16,6 +16,7 @@
 
 .bold { font-weight:bold; }
 .italic { font-style:italic; }
+.underline { text-decoration: underline !important; }
 .center { text-align: center; }
 .left { text-align: left; }
 .right { text-align: right; }
