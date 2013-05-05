@@ -14,7 +14,7 @@
     {% endif %}
     {{ show.text|raw }}
     {% if show.events %}
-        <h2>Prochaines dates</h2>
+        <h2>Prochaines représentations</h2>
         {% for event in show.events %}
             {{ include('LesAutresSiteBundle:Default:event.html.twig', {'event': event}) }}
         {% endfor %}

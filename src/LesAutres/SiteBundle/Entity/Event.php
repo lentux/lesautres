@@ -76,7 +76,7 @@ class Event
     {
         return (
             $this->id ?
-            "Événement ".$this->id :
+            ($this->title ? $this->title : "Événement ".$this->id) :
             "Nouvel événement"
         );
     }

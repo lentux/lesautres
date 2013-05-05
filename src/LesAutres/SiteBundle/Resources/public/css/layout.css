@@ -120,6 +120,15 @@ body {
     font-size:12px;
 }
 
+.rightcolumn div.agenda h4 {
+    /*background: none repeat scroll 0 0 #fcf9ce;*/
+    margin: 15px 0 5px 0;
+}
+
+.rightcolumn div.agenda p {
+    margin: 5px 5px 5px 10px;
+}
+
 .rightcolumn div.slideshow {
     float: right;
     width: 236px;

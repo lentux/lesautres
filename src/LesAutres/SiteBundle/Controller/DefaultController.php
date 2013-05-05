@@ -3,6 +3,7 @@
 namespace LesAutres\SiteBundle\Controller;
 
 use LesAutres\SiteBundle\Controller\LesAutresController;
+use LesAutres\SiteBundle\Entity\Date;
 use LesAutres\SiteBundle\Entity\Page;
 use LesAutres\SiteBundle\Entity\Show;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,10 +58,30 @@ class DefaultController extends LesAutresController
             ->getDatesForDay($day, $month, $year)
         ;
         
+        $date = new Date();
+        $date->setDate(new \DateTime($year."-".$month."-".$day." 00:00:00"));
+        
         return $this->render(
             'LesAutresSiteBundle:Default:date.html.twig',
             array(
-                'title' => $day."/".$month."/".$year,
+                'title' => "Représentations du ".$date->getFormatedDate(false),
+                'dates' => $dates,
+            )
+        );
+    }
+    
+    
+    
+    public function nextEventsAction()
+    {
+        $dates = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Date')
+            ->getNextDates(10)
+        ;
+        
+        return $this->render(
+            'LesAutresSiteBundle:Default:next_events.html.twig',
+            array(
                 'dates' => $dates,
             )
         );

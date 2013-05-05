@@ -2,11 +2,9 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <ul>
     {% for date in dates %}
         {% if date.event and date.event.show %}
-            <li>{{ date.event.place }}, {{ date }} : <a href="{{ path('show', {'slug': date.event.show.slug}) }}">{{ date.event.show }}</a></li>
+            {{ include('LesAutresSiteBundle:Default:event.html.twig', {'event': date.event}) }}
         {% endif %}
     {% endfor %}
-    </ul>
 {% endblock %}
