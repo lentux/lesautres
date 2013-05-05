@@ -42,7 +42,7 @@ class ShowAdmin extends Admin
             )
             ->add(
                 'summary',
-                'textarea',
+                'text',
                 array(
                     'label'  => "Résumé",
                 )

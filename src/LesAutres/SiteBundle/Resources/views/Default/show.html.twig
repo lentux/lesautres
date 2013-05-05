@@ -1,7 +1,16 @@
 {% extends 'LesAutresSiteBundle::layout.html.twig' %}
 
 {% block content %}
+    {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('show', {'slug': show.slug})}) }}
     <h1>{{ title }}</h1>
+    {% if show.duration or show.actorCount or show.masterCount or show.playletCount %}
+        <ul>
+            {% if show.duration %}<li>Durée : {{ show.duration }}</li>{% endif %}
+            {% if show.actorCount %}<li>{{ show.actorCount }} comédiens</li>{% endif %}
+            {% if show.masterCount %}<li>{{ show.masterCount }} meneur de jeu</li>{% endif %}
+            {% if show.playletCount %}<li>{{ show.playletCount }} saynètes</li>{% endif %}
+        </ul>
+    {% endif %}
     {{ show.text|raw }}
     {% if show.events %}
         <h2>Prochaines dates</h2>

@@ -38,6 +38,26 @@ class Show
      * @ORM\Column(type="text")
      */
     protected $text;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $duration;
+    
+    /**
+     * @ORM\Column(type="integer", name="actor_count", nullable=true)
+     */
+    protected $actorCount;
+    
+    /**
+     * @ORM\Column(type="integer", name="master_count", nullable=true)
+     */
+    protected $masterCount;
+    
+    /**
+     * @ORM\Column(type="integer", name="playlet_count", nullable=true)
+     */
+    protected $playletCount;
 
     /**
      * @ORM\Column(type="datetime", name="created_at")
@@ -325,5 +345,97 @@ class Show
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     * @return Show
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer 
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set actorCount
+     *
+     * @param integer $actorCount
+     * @return Show
+     */
+    public function setActorCount($actorCount)
+    {
+        $this->actorCount = $actorCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get actorCount
+     *
+     * @return integer 
+     */
+    public function getActorCount()
+    {
+        return $this->actorCount;
+    }
+
+    /**
+     * Set masterCount
+     *
+     * @param integer $masterCount
+     * @return Show
+     */
+    public function setMasterCount($masterCount)
+    {
+        $this->masterCount = $masterCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get masterCount
+     *
+     * @return integer 
+     */
+    public function getMasterCount()
+    {
+        return $this->masterCount;
+    }
+
+    /**
+     * Set playletCount
+     *
+     * @param integer $playletCount
+     * @return Show
+     */
+    public function setPlayletCount($playletCount)
+    {
+        $this->playletCount = $playletCount;
+    
+        return $this;
+    }
+
+    /**
+     * Get playletCount
+     *
+     * @return integer 
+     */
+    public function getPlayletCount()
+    {
+        return $this->playletCount;
     }
 }

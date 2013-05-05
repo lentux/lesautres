@@ -163,6 +163,6 @@ stfalcon_tinymce:
                 mode: "textareas"
                 theme: "advanced"
                 theme_advanced_buttons1: "code ,formatselect,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,undo,redo,link,unlink,outdent,indent"
-                theme_advanced_blockformats : "p,h2"
+                theme_advanced_blockformats : "p,h2,h3"
                 width: "400"
                 height: "300"
