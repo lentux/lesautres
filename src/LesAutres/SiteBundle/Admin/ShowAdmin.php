@@ -41,6 +41,38 @@ class ShowAdmin extends Admin
                 )
             )
             ->add(
+                'duration',
+                'number',
+                array(
+                    'label'  => "Durée (en minutes)",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'actorCount',
+                'number',
+                array(
+                    'label'  => "Nombre de comédiens",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'masterCount',
+                'number',
+                array(
+                    'label'  => "Nombre de meneurs de jeu",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'playletCount',
+                'number',
+                array(
+                    'label'  => "Nombre de saynètes",
+                    'required' => false,
+                )
+            )
+            ->add(
                 'summary',
                 'text',
                 array(
