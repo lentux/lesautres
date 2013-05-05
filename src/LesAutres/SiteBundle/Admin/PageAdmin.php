@@ -34,6 +34,7 @@ class PageAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Résumé",
+                    'required' => false,
                 )
             )
             ->add(

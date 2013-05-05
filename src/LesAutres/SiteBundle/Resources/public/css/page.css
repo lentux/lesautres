@@ -47,3 +47,18 @@ div.social {
 div.social img {
     margin: 5px;
 }
+
+
+
+div.frame {
+    margin: 10px;
+    border: 1px solid #CCCAE2;
+    clear: both;
+}
+
+div.googlemaps {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    float: right;
+}

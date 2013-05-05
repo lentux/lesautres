@@ -20,3 +20,5 @@
 .center { text-align: center; }
 .left { text-align: left; }
 .right { text-align: right; }
+.float_left { float: left; }
+.float_right { float: right; }

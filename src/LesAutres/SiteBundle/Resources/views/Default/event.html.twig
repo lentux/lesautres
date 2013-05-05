@@ -1,0 +1,26 @@
+<div class="frame">
+    <div class="float_right">
+        <p class="right">
+            <span class="bold">{{ event.place }}</span><br/>
+            {{ event.place.street }} -
+            {{ event.place.zipcode }} {{ event.place.city }}
+        </p>
+        <div class="googlemaps">
+            <iframe width="200" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&source=s_q&hl=fr&geocode=&q={{ event.place.street }} {{ event.place.zipcode }} {{ event.place.city }}, France&ie=UTF8&z=14&t=m&iwloc=addr&output=embed"></iframe>
+        </div>
+    </div>
+    <div class="float_left">
+        {% if event.title or event.description %}
+            <p>
+                {% if event.title %}<span class="bold">{{ event.title }}</span><br/>{% endif %}
+                {{ event.description }}
+            </p>
+        {% endif %}
+        <ul>
+            {% for date in event.dates %}
+                <li>{{ date }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>

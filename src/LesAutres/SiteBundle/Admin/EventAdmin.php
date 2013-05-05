@@ -25,9 +25,10 @@ class EventAdmin extends Admin
             )
             ->add(
                 'description',
-                'textarea',
+                'text',
                 array(
                     'label'  => "Description",
+                    'required' => false,
                 )
             )
             ->add(
@@ -46,6 +47,7 @@ class EventAdmin extends Admin
                     'class' => 'LesAutresSiteBundle:Place',
                     'query_builder' => function($repository) { return $repository->createQueryBuilder('p')->orderBy('p.id', 'ASC'); },
                     'label'  => "Lieu",
+                    'required' => false,
                 )
             )
             ->add(
@@ -53,6 +55,7 @@ class EventAdmin extends Admin
                 'sonata_type_collection',
                 array(
                     'label'  => "Dates",
+                    'required' => false,
                 ),
                 array(
                     'edit' => 'inline',
