@@ -42,7 +42,7 @@ class ShowAdmin extends Admin
             )
             ->add(
                 'duration',
-                'number',
+                'text',
                 array(
                     'label'  => "Durée (en minutes)",
                     'required' => false,
