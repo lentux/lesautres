@@ -5,7 +5,7 @@ $(function(){
     
     // unhide emails
     $("span.m").each(function() {
-        var email = $(this).attr('href').replace('?','@').replace('=','.');
+        var email = $(this).attr('style').replace(':','@').replace(' ','').replace(';','');
         $(this).html("<a href=\"mailto:" + email + "\">" + email + "</a>");
     });
 }); 
