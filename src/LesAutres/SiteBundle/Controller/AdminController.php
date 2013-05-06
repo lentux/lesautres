@@ -2,9 +2,9 @@
 
 namespace LesAutres\SiteBundle\Controller;
 
-use LesAutres\SiteBundle\Controller\LesAutresController;
+use LesAutres\SiteBundle\Controller\DefaultController;
 
-class AdminController extends LesAutresController
+class AdminController extends DefaultController
 {
     public function indexAction()
     {

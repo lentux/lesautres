@@ -21,6 +21,7 @@ class EventAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Titre",
+                    'required' => false,
                 )
             )
             ->add(

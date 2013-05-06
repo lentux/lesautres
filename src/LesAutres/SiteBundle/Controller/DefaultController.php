@@ -2,76 +2,10 @@
 
 namespace LesAutres\SiteBundle\Controller;
 
-use LesAutres\SiteBundle\Controller\LesAutresController;
-use LesAutres\SiteBundle\Entity\Date;
-use LesAutres\SiteBundle\Entity\Page;
-use LesAutres\SiteBundle\Entity\Show;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends LesAutresController
+class DefaultController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render(
-            'LesAutresSiteBundle:Default:index.html.twig',
-            array(
-                'title' => "Accueil",
-                'menu_underline_slug' => "accueil",
-            )
-        );
-    }
-    
-    
-    
-    public function pageAction(Page $page)
-    {
-        return $this->render(
-            'LesAutresSiteBundle:Default:page.html.twig',
-            array(
-                'title' => $page->getTitle(),
-                'menu_underline_slug' => $page->getSlug(),
-                'page' => $page,
-            )
-        );
-    }
-    
-    
-    
-    public function showAction(Show $show)
-    {
-        return $this->render(
-            'LesAutresSiteBundle:Default:show.html.twig',
-            array(
-                'title' => $show->getTitle(),
-                'menu_underline_slug' => $show->getPage()->getSlug(),
-                'show' => $show,
-            )
-        );
-    }
-    
-    
-    
-    public function dateAction($day, $month, $year)
-    {
-        $dates = $this->getDoctrine()
-            ->getRepository('LesAutresSiteBundle:Date')
-            ->getDatesForDay($day, $month, $year)
-        ;
-        
-        $date = new Date();
-        $date->setDate(new \DateTime($year."-".$month."-".$day." 00:00:00"));
-        
-        return $this->render(
-            'LesAutresSiteBundle:Default:date.html.twig',
-            array(
-                'title' => "Représentations du ".$date->getFormatedDate(false),
-                'dates' => $dates,
-            )
-        );
-    }
-    
-    
-    
     public function nextEventsAction()
     {
         $dates = $this->getDoctrine()
