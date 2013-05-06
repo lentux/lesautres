@@ -39,6 +39,13 @@
 
 
 
+div.error {
+    margin: 100px;
+    text-align: center;
+}
+
+
+
 div.social {
     float: right;
     font-size: 0;
@@ -59,8 +66,16 @@ div.show_infos img.picture {
     width: 150px;
 }
 
-div.show_infos a {
-    color: #D9E9B3;
+div.show_infos a.dossier {
+    background-color: #D9E9B3;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+div.show_infos a.dossier img {
+    vertical-align: bottom;
 }
 
 

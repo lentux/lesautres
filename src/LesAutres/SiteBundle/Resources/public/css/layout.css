@@ -102,7 +102,7 @@ body {
 .rightcolumn div.page {
     float: left;
     width: 548px;
-    min-height: 400px;
+    min-height: 500px;
     margin: 10px 0;
     text-align: justify;
     box-shadow: 0 0 4px #888;
@@ -137,4 +137,17 @@ body {
     float: right;
     width: 236px;
     margin: 10px 0;
+}
+
+
+
+/*
+ * footer
+ */
+
+.footer {
+    clear: both;
+    text-align: center;
+    font-size: 10px;
+    color: grey;
 }
