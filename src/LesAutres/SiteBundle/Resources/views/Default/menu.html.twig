@@ -1,7 +1,7 @@
 <ul class="menu">
     {% for page in pages %}
         <li>
-            <a href="{{ path('page', {'slug': page.slug}) }}" {% if page.slug == menu_underline_slug %} class="underline"{% endif %}>{{ page.title }}</a>
+            <a href="{% if page.slug == 'accueil' %}{{ path('homepage') }}{% else %}{{ path('page', {'slug': page.slug}) }}{% endif %}" {% if page.slug == menu_underline_slug %} class="underline"{% endif %}>{{ page.title }}</a>
         </li>
     {% endfor %}
 </ul>

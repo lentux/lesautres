@@ -12,13 +12,12 @@ class BrowseController extends DefaultController
 {
     public function indexAction()
     {
-        return $this->render(
-            'LesAutresSiteBundle:Browse:index.html.twig',
-            array(
-                'title' => "Accueil",
-                'menu_underline_slug' => "accueil",
-            )
-        );
+        $page = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Page')
+            ->findOneBy(array('slug' => 'accueil'))
+        ;
+        
+        return $this->pageAction($page);
     }
     
     

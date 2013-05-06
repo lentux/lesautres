@@ -1,0 +1,8 @@
+<div class="frame">
+    <p>
+        <span class="bold">{{ show.title }}</span><br/>
+        {{ show.summary }}<br/>
+        <a class="show_link" href="{{ path('show', {'slug': show.slug}) }}">Lire la suite</a>
+    </p>
+    <div style="clear:both;"></div>
+</div>

@@ -3,9 +3,9 @@
 {% block content %}
     <h1>{{ title }}</h1>
     {{ page.text|raw }}
-    <ul>
-    {% for show in page.shows %}
-        <li><a href="{{ path('show', {'slug': show.slug}) }}">{{ show }}</a></li>
-    {% endfor %}
-    </ul>
+    {% if page.shows %}
+        {% for show in page.shows %}
+            {{ include('LesAutresSiteBundle:Default:show.html.twig', {'show': show}) }}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

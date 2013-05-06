@@ -57,6 +57,13 @@ div.frame {
     clear: both;
 }
 
+div.frame .show_link {
+    float: right;
+    margin: 10px;
+    color: #FCBC7C;
+    font-weight: bold;
+}
+
 div.googlemaps {
     width: 200px;
     height: 200px;
