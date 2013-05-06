@@ -86,7 +86,30 @@ class ShowAdmin extends Admin
                     'label'  => "Texte",
                 )
             )
+            ->add(
+                'files',
+                'sonata_type_collection',
+                array(
+                    'cascade_validation' => true,
+                    'label'  => "Fichiers",
+                    'required' => false,
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                )
+            )
         ;
+    }
+    
+    public function prePersist($show)
+    {
+        $show->setFiles($show->getFiles());
+    }
+ 
+    public function preUpdate($show)
+    {
+        $show->setFiles($show->getFiles());
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

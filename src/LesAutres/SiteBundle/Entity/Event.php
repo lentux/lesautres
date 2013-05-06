@@ -87,6 +87,24 @@ class Event
     
     
     /**
+     * METHODS
+     */
+    
+    public function setDates($dates) {
+        $this->dates = new ArrayCollection();
+ 
+        foreach ($dates as $date) {
+            $date->setEvent($this);
+            $this->addDate($date);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    /**
      * GETTERS & SETTERS
      */
 

@@ -8,76 +8,51 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class EventAdmin extends Admin
+class FileAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        //$this->getSubject()->setDescription();
-        //$this->getConfigurationPool()->getContainer()->get('doctrine');
-        //$session = $this->getConfigurationPool()->getContainer()->get('request')->getSession();
-        
         $formMapper
-            ->add(
-                'title',
-                'text',
-                array(
-                    'label'  => "Titre",
-                    'required' => false,
-                )
-            )
-            ->add(
-                'description',
-                'text',
-                array(
-                    'label'  => "Description",
-                    'required' => false,
-                )
-            )
-            ->add(
+            /*->add(
                 'show',
                 'entity',
                 array(
                     'class' => 'LesAutresSiteBundle:Show',
                     'query_builder' => function($repository) { return $repository->createQueryBuilder('s')->orderBy('s.id', 'ASC'); },
                     'label'  => "Spectacle",
+                    'required' => false,
+                )
+            )*/
+            ->add(
+                'path',
+                'text',
+                array(
+                    'label'  => "Nom",
+                    'required' => false,
+                    'read_only' => true,
                 )
             )
             ->add(
-                'place',
-                'entity',
+                'file',
+                'file',
                 array(
-                    'class' => 'LesAutresSiteBundle:Place',
-                    'query_builder' => function($repository) { return $repository->createQueryBuilder('p')->orderBy('p.id', 'ASC'); },
-                    'label'  => "Lieu",
+                    'label'  => "Fichier",
                     'required' => false,
-                )
-            )
-            ->add(
-                'dates',
-                'sonata_type_collection',
-                array(
-                    'cascade_validation' => true,
-                    'label'  => "Dates",
-                    'required' => false,
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
                 )
             )
         ;
     }
     
-    public function prePersist($event)
+    public function prePersist($file)
     {
-        $event->setDates($event->getDates());
+        $file->upload();
     }
  
-    public function preUpdate($event)
+    public function preUpdate($file)
     {
-        $event->setDates($event->getDates());
+        $file->upload();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -88,13 +63,6 @@ class EventAdmin extends Admin
                 null,
                 array(
                     'label'  => "Spectacle",
-                )
-            )
-            ->add(
-                'place',
-                null,
-                array(
-                    'label'  => "Lieu",
                 )
             )
         ;
@@ -111,17 +79,17 @@ class EventAdmin extends Admin
                 )
             )
             ->add(
-                'place',
+                'path',
                 null,
                 array(
-                    'label'  => "Lieu",
+                    'label'  => "Fichier",
                 )
             )
             ->add(
-                'dates',
+                'mimeType',
                 null,
                 array(
-                    'label'  => "Dates",
+                    'label'  => "Mime Type",
                 )
             )
             ->add(
@@ -149,17 +117,17 @@ class EventAdmin extends Admin
                 )
             )
             ->add(
-                'place',
+                'mimeType',
                 null,
                 array(
-                    'label'  => "Lieu",
+                    'label'  => "Mime Type",
                 )
             )
             ->add(
-                'dates',
+                'path',
                 null,
                 array(
-                    'label'  => "Dates",
+                    'label'  => "Fichier",
                 )
             )
         ;

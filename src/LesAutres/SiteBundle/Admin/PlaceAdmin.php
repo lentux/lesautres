@@ -23,17 +23,11 @@ class PlaceAdmin extends Admin
                 )
             )
             ->add(
-                'slug',
-                'text',
-                array(
-                    'label'  => "Slug",
-                )
-            )
-            ->add(
                 'description',
                 'textarea',
                 array(
                     'label'  => "Description",
+                    'required' => false,
                 )
             )
             ->add(

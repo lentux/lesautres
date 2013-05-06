@@ -10,7 +10,7 @@ class DefaultController extends Controller
     {
         $dates = $this->getDoctrine()
             ->getRepository('LesAutresSiteBundle:Date')
-            ->getNextDates(10)
+            ->getNextDates(50)
         ;
         
         return $this->render(

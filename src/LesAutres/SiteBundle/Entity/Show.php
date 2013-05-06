@@ -85,6 +85,11 @@ class Show
      * @ORM\OneToMany(targetEntity="Event", mappedBy="show")
      */
     protected $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity="File", mappedBy="show", cascade={"persist", "remove"})
+     */
+    protected $files;
     
     
     
@@ -100,6 +105,7 @@ class Show
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->events = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
     
     public function __toString()
@@ -109,6 +115,25 @@ class Show
             $this->title :
             "Nouveau spectacle"
         );
+    }
+    
+    
+    
+    
+    
+    
+    /**
+     * METHODS
+     */
+    
+    public function setFiles($files) {
+        $this->files = new ArrayCollection();
+ 
+        foreach ($files as $file) {
+            $file->setShow($this);
+            $this->addFile($file);
+            $file->upload();
+        }
     }
     
     
@@ -437,5 +462,38 @@ class Show
     public function getPlayletCount()
     {
         return $this->playletCount;
+    }
+
+    /**
+     * Add files
+     *
+     * @param \LesAutres\SiteBundle\Entity\File $files
+     * @return Show
+     */
+    public function addFile(\LesAutres\SiteBundle\Entity\File $files)
+    {
+        $this->files[] = $files;
+    
+        return $this;
+    }
+
+    /**
+     * Remove files
+     *
+     * @param \LesAutres\SiteBundle\Entity\File $files
+     */
+    public function removeFile(\LesAutres\SiteBundle\Entity\File $files)
+    {
+        $this->files->removeElement($files);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

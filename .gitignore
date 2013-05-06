@@ -1,4 +1,5 @@
 /web/bundles/
+/web/uploads/
 /app/bootstrap.php.cache
 /app/config/parameters.yml
 /app/cache/*
@@ -7,4 +8,3 @@
 /vendor/
 /bin/
 /composer.phar
-/web/uploads/images/*

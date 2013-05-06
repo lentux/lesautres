@@ -118,6 +118,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Tables, label: Lieux }
         arguments:   [ null, LesAutres\SiteBundle\Entity\Place, SonataAdminBundle:CRUD ]
+    sonata_admin_file:
+        class:   LesAutres\SiteBundle\Admin\FileAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Tables, label: Fichiers }
+        arguments:   [ null, LesAutres\SiteBundle\Entity\File, SonataAdminBundle:CRUD ]
 
 sonata_block:
     default_contexts: [cms]

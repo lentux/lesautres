@@ -16,15 +16,6 @@ class DateAdmin extends Admin
     {
         $formMapper
             ->add(
-                'event',
-                'entity',
-                array(
-                    'class' => 'LesAutresSiteBundle:Event',
-                    'query_builder' => function($repository) { return $repository->createQueryBuilder('e')->orderBy('e.id', 'ASC'); },
-                    'label'  => "Événement",
-                )
-            )
-            ->add(
                 'date',
                 'datetime',
                 array(
