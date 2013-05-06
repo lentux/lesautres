@@ -38,4 +38,35 @@ class DefaultController extends Controller
             )
         );
     }
+    
+    
+    
+    public function slideshowAction($page_slug)
+    {
+        $images_web_dir = '/images/slideshow/'.$page_slug;
+        $images_root_dir = __DIR__.'/../Resources/public'.$images_web_dir;
+        if(!file_exists($images_root_dir))
+        {
+            return $this->render('LesAutresSiteBundle:Default:empty.html.twig');
+        }
+        
+        $images = array();
+        if ($handle = opendir($images_root_dir)) {
+            while (false !== ($file = readdir($handle))) {
+                if ($file != "." && $file != "..") {
+                    $images[] = $file;
+                }
+            }
+            closedir($handle);
+        }
+        sort($images);
+        
+        return $this->render(
+            'LesAutresSiteBundle:Default:slideshow.html.twig',
+            array(
+                'web_dir' => $images_web_dir,
+                'images' => $images,
+            )
+        );
+    }
 }
