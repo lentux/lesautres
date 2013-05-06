@@ -25,6 +25,16 @@ class File
     protected $path;
 
     /**
+     * @ORM\Column(name="is_pdf", type="boolean")
+     */
+    private $isPdf;
+
+    /**
+     * @ORM\Column(name="is_image", type="boolean")
+     */
+    private $isImage;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Show", inversedBy="files")
      * @ORM\JoinColumn(name="show_id", referencedColumnName="id")
      */
@@ -310,5 +320,51 @@ class File
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set isPdf
+     *
+     * @param boolean $isPdf
+     * @return File
+     */
+    public function setIsPdf($isPdf)
+    {
+        $this->isPdf = $isPdf;
+    
+        return $this;
+    }
+
+    /**
+     * Get isPdf
+     *
+     * @return boolean 
+     */
+    public function getIsPdf()
+    {
+        return $this->isPdf;
+    }
+
+    /**
+     * Set isImage
+     *
+     * @param boolean $isImage
+     * @return File
+     */
+    public function setIsImage($isImage)
+    {
+        $this->isImage = $isImage;
+    
+        return $this;
+    }
+
+    /**
+     * Get isImage
+     *
+     * @return boolean 
+     */
+    public function getIsImage()
+    {
+        return $this->isImage;
     }
 }

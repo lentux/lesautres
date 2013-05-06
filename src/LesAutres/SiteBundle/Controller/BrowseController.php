@@ -38,12 +38,29 @@ class BrowseController extends DefaultController
     
     public function showAction(Show $show)
     {
+        $pdf = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:File')
+            ->findOneBy(array(
+                'show' => $show,
+                'isPdf' => true,
+            ))
+        ;
+        $image = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:File')
+            ->findOneBy(array(
+                'show' => $show,
+                'isImage' => true,
+            ))
+        ;
+        
         return $this->render(
             'LesAutresSiteBundle:Browse:show.html.twig',
             array(
                 'title' => $show->getTitle(),
                 'menu_underline_slug' => $show->getPage()->getSlug(),
                 'show' => $show,
+                'pdf' => $pdf,
+                'image' => $image,
             )
         );
     }

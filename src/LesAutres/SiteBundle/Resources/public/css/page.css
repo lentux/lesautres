@@ -49,6 +49,20 @@ div.social img {
     margin: 5px;
 }
 
+div.show_infos {
+    float: right;
+}
+
+div.show_infos img.picture {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+}
+
+div.show_infos a {
+    color: #D9E9B3;
+}
+
 
 
 div.frame {

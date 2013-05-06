@@ -35,6 +35,22 @@ class FileAdmin extends Admin
                 )
             )
             ->add(
+                'isImage',
+                'checkbox',
+                array(
+                    'label' => "Illustration",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'isPdf',
+                'checkbox',
+                array(
+                    'label' => "Dossier pdf",
+                    'required' => false,
+                )
+            )
+            ->add(
                 'file',
                 'file',
                 array(
