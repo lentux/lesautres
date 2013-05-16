@@ -17,7 +17,7 @@
         </ul>
     {% endif %}
     {{ show.text|raw }}
-    {% if show.events %}
+    {% if count(show.events) >= 1 %}
         <h2>Prochaines représentations</h2>
         {% for event in show.events %}
             {{ include('LesAutresSiteBundle:Default:event.html.twig', {'event': event}) }}

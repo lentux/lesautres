@@ -19,6 +19,7 @@ class TwigExtension extends \Twig_Extension
     {
         return array(
             'today' => new \Twig_Function_Method($this, 'today'),
+            'count' => new \Twig_Function_Method($this, 'count'),
         );
     }
 
@@ -33,6 +34,18 @@ class TwigExtension extends \Twig_Extension
     {
         $today = new Date();
         return $today->getFormatedDate(false);
+    }
+
+
+
+    /**
+     * Count
+     *
+     * @return integer
+     */
+    public function count($data)
+    {
+        return count($data);
     }
 
 
