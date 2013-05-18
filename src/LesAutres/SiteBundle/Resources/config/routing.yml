@@ -7,7 +7,7 @@ admin:
     defaults: { _controller: LesAutresSiteBundle:Admin:index }
 
 sitemap:
-    pattern:  /sitemap.xml  
+    pattern:  /sitemap.xml
     defaults: { _controller: LesAutresSiteBundle:Default:sitemap }
 
 page:
@@ -17,3 +17,7 @@ page:
 show:
     pattern:  /spectacle/{slug}
     defaults: { _controller: LesAutresSiteBundle:Browse:show }
+
+feed_events_atom:
+    pattern:  /evenements/atom
+    defaults: { _controller: LesAutresSiteBundle:Feed:events }

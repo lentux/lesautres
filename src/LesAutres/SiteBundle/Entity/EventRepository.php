@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+    public function getLatestEvent()
+    {
+        $query = $this->createQueryBuilder('e')
+            ->orderBy('e.createdAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery();
+        
+        try {
+            $event = $query->getSingleResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $event = null;
+        }
+        
+        return $event;
+    }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>la Compagnie des Autres</title>
+    <subtitle>théâtre professionnel en Provence</subtitle>
+    <link href="{{ url('feed_events_atom') }}" rel="self"/>
+    <link href="{{ url('homepage') }}"/>
+    <updated>{{ lastUpdated }}</updated>
+    <author><name>la Compagnie des Autres</name></author>
+    <id>{{ feedId }}</id>
+    {% for event in events %}
+        <entry>
+            <title>{{ event }}</title>
+            <link href="{{ url('show', { 'slug': event.show.slug}) }}" />
+            <id>{{ url('show', { 'slug': event.show.slug}) }}</id>
+            <updated>{{ event.updatedAt.format(constant('DATE_ATOM')) }}</updated>
+            <summary type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <div>
+                    <p>{{ event.description|raw }}</p>
+                    <h2>Lieu</h2>
+                    <p>
+                        {{ event.place }}<br/>
+                        {{ event.place.street }}<br/>
+                        {{ event.place.zipcode }} {{ event.place.city }}
+                    </p>
+                    <h2>Dates</h2>
+                    <ul>
+                        {% for date in event.dates %}
+                            <li>{{ date }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            </summary>
+            <author><name>la Compagnie des Autres</name></author>
+        </entry>
+    {% endfor %}
+</feed>

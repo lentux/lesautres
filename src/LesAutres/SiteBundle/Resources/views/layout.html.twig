@@ -7,6 +7,8 @@
         <meta name="description" content="La Compagnie des Autres" />
         <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
         <title>{{ title }} - la Compagnie des Autres</title>
+        <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events_atom') }}" />
+        <!-- <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="" /> -->
         
         <!-- css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}" />
@@ -39,7 +41,7 @@
             
             <!-- begin left column -->
             <div class="leftcolumn">
-                <img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="logo puzzle" class="logo" />
+                <img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="Logo puzzle" class="logo" />
                 {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
                 {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
                 <div class="infos">
@@ -47,7 +49,7 @@
                         Le {{ today() }}
                     </p>
                     <p>
-                        <img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="logo compagnie" />
+                        <img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="Logo compagnie" />
                     </p>
                     <p>
                         <span class="bold">PROFESSIONNELS DE&nbsp;THÉÂTRE</span><br/>
