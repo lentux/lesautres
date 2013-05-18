@@ -1,0 +1,25 @@
+*
+{
+    background: none;
+}
+
+.rightcolumn div..page,
+.rightcolumn
+{
+    width: 100%;
+    margin: 0;
+    float: none;
+    position: relative;
+    box-shadow: none;
+}
+
+.leftcolumn,
+#scrollingtext,
+.tickercontainer,
+.title,
+.agenda,
+.slideshow,
+.noprint
+{
+    display: none;
+}
