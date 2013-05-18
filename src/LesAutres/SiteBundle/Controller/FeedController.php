@@ -10,7 +10,7 @@ class FeedController extends DefaultController
 {
     public function eventsAction($type)
     {
-        if($type != "atom")
+        if($type != "atom" and $type != "rss")
         {
             throw $this->createNotFoundException('La page demandée n\'existe pas');
         }

@@ -19,5 +19,5 @@ show:
     defaults: { _controller: LesAutresSiteBundle:Browse:show }
 
 feed_events:
-    pattern:  /evenements/{type}
+    pattern:  /flux/evenements/{type}
     defaults: { _controller: LesAutresSiteBundle:Feed:events }
