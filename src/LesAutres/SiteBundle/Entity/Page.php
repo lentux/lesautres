@@ -30,6 +30,11 @@ class Page
     protected $slug;
 
     /**
+     * @ORM\Column(type="string", length=256, nullable=true)
+     */
+    protected $keywords;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $summary;
@@ -295,5 +300,28 @@ class Page
     public function getShows()
     {
         return $this->shows;
+    }
+
+    /**
+     * Set keywords
+     *
+     * @param string $keywords
+     * @return Page
+     */
+    public function setKeywords($keywords)
+    {
+        $this->keywords = $keywords;
+    
+        return $this;
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return string 
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 }

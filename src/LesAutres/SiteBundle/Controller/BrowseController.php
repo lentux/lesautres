@@ -12,18 +12,13 @@ class BrowseController extends DefaultController
 {
     public function indexAction()
     {
-        /*$page = $this->getDoctrine()
-            ->getRepository('LesAutresSiteBundle:Page')
-            ->findOneBy(array('slug' => 'accueil'))
-        ;
-        
-        return $this->pageAction($page);*/
         return $this->render(
             'LesAutresSiteBundle:Browse:index.html.twig',
             array(
-                'title' => 'Accueil',
+                'title' => "Accueil",
+                'description' => "Compagnie de théâtre professionnelle basée en Provence. Elle est spécialisée en théâtre-forum, théâtre-image et théâtre de l'opprimé. Ses membres sont comédiens, techniciens et auteurs de spectacle vivant.",
                 'keywords' => "compagnie, compagnie des autres, théâtre, théâtre forum, ateliers, formation, création, professionnel, spectacles",
-                'menu_underline_slug' => 'accueil',
+                'menu_underline_slug' => "accueil",
             )
         );
     }
@@ -36,6 +31,8 @@ class BrowseController extends DefaultController
             'LesAutresSiteBundle:Browse:page.html.twig',
             array(
                 'title' => $page->getTitle(),
+                'description' => $page->getSummary(),
+                'keywords' => $page->getKeywords(),
                 'menu_underline_slug' => $page->getSlug(),
                 'page' => $page,
             )
@@ -65,6 +62,8 @@ class BrowseController extends DefaultController
             'LesAutresSiteBundle:Browse:show.html.twig',
             array(
                 'title' => $show->getTitle(),
+                'description' => $show->getSummary(),
+                'keywords' => $show->getKeywords(),
                 'menu_underline_slug' => $show->getPage()->getSlug(),
                 'show' => $show,
                 'pdf' => $pdf,
@@ -72,25 +71,4 @@ class BrowseController extends DefaultController
             )
         );
     }
-    
-    
-    /*
-    public function dateAction($day, $month, $year)
-    {
-        $dates = $this->getDoctrine()
-            ->getRepository('LesAutresSiteBundle:Date')
-            ->getDatesForDay($day, $month, $year)
-        ;
-        
-        $date = new Date();
-        $date->setDate(new \DateTime($year."-".$month."-".$day." 00:00:00"));
-        
-        return $this->render(
-            'LesAutresSiteBundle:Browse:date.html.twig',
-            array(
-                'title' => "Représentations du ".$date->getFormatedDate(false),
-                'dates' => $dates,
-            )
-        );
-    }*/
 }

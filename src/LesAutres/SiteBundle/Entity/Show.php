@@ -30,6 +30,11 @@ class Show
     protected $slug;
 
     /**
+     * @ORM\Column(type="string", length=256, nullable=true)
+     */
+    protected $keywords;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $summary;
@@ -495,5 +500,28 @@ class Show
     public function getFiles()
     {
         return $this->files;
+    }
+
+    /**
+     * Set keywords
+     *
+     * @param string $keywords
+     * @return Show
+     */
+    public function setKeywords($keywords)
+    {
+        $this->keywords = $keywords;
+    
+        return $this;
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return string 
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 }

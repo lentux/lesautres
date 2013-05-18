@@ -87,6 +87,14 @@ class ShowAdmin extends Admin
                 )
             )
             ->add(
+                'keywords',
+                'text',
+                array(
+                    'label'  => "Mots-clés",
+                    'required' => false,
+                )
+            )
+            ->add(
                 'files',
                 'sonata_type_collection',
                 array(

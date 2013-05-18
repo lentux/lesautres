@@ -45,6 +45,14 @@ class PageAdmin extends Admin
                     'attr' => array('class' => 'tinymce', 'tinymce'=>'{"theme":"simple"}')
                 )
             )
+            ->add(
+                'keywords',
+                'text',
+                array(
+                    'label'  => "Mots-clés",
+                    'required' => false,
+                )
+            )
         ;
     }
 
