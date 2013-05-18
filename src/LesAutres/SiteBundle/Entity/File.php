@@ -35,6 +35,12 @@ class File
     private $isImage;
 
     /**
+     * @ORM\Column(type="string", length=32, nullable=true)
+     * image width and height
+     */
+    protected $attr;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Show", inversedBy="files")
      * @ORM\JoinColumn(name="show_id", referencedColumnName="id")
      */
@@ -92,7 +98,7 @@ class File
     
     public function isImage()
     {
-        return ($this->mimeType == "image/jpeg" || $this->mimeType == "image/jpg");
+        return ($this->mimeType == "image/jpeg" || $this->mimeType == "image/jpg" || $this->mimeType == "image/png");
     }
     
     
@@ -112,6 +118,13 @@ class File
         }
         
         $this->mimeType = $this->file->getMimeType();
+        
+        // width and height
+        if($this->isImage())
+        {
+            list($width, $height, $type, $attr) = getimagesize($this->file);
+            $this->attr = $attr;
+        }
 
         // use the original file name here but you should
         // sanitize it at least to avoid any security issues
@@ -133,7 +146,7 @@ class File
     
     public function getAbsolutePath()
     {
-        return $this->getRootDir().'/'.$this->path;
+        return $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
@@ -366,5 +379,28 @@ class File
     public function getIsImage()
     {
         return $this->isImage;
+    }
+
+    /**
+     * Set attr
+     *
+     * @param string $attr
+     * @return File
+     */
+    public function setAttr($attr)
+    {
+        $this->attr = $attr;
+    
+        return $this;
+    }
+
+    /**
+     * Get attr
+     *
+     * @return string 
+     */
+    public function getAttr()
+    {
+        return $this->attr;
     }
 }

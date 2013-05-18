@@ -3,8 +3,8 @@
 {% block content %}
     <div class="show_infos">
         {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('show', {'slug': show.slug})}) }}<br/>
-        {% if image %}<img src="{{ image.webPath }}" alt="" class="picture" /><br/>{% endif %}
-        {% if pdf %}<div class="center"><a href="{{ pdf.webPath }}" class="dossier"><img src="/images/icons/pdf.png" alt="pdf" />&nbsp;&nbsp;&nbsp;Dossier</a></div>{% endif %}
+        {% if image %}<img src="{{ image.webPath }}" {{ image.attr }} alt="" class="picture" /><br/>{% endif %}
+        {% if pdf %}<div class="center"><a href="{{ pdf.webPath }}" class="dossier"><img width="16" height="16" src="/images/icons/pdf.png" alt="pdf" />&nbsp;&nbsp;&nbsp;Dossier</a></div>{% endif %}
     </div>
     <h1>{{ title }}</h1>
     {% if show.summary %}<h3>{{ show.summary }}</h3>{% endif %}

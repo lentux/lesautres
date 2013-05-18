@@ -26,7 +26,7 @@
             
             <!-- begin left column -->
             <div class="leftcolumn">
-                <img src="/images/logo/logo_puzzle.png" alt="logo puzzle" class="logo" />
+                <img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="logo puzzle" class="logo" />
                 {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
                 {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
                 <div class="infos">
@@ -34,7 +34,7 @@
                         Le {{ today() }}
                     </p>
                     <p>
-                        <img src="/images/logo/logo_compagnie.png" alt="logo compagnie" />
+                        <img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="logo compagnie" />
                     </p>
                     <p>
                         <span class="bold">PROFESSIONNELS DE&nbsp;THÉÂTRE</span><br/>
