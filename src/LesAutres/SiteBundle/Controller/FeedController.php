@@ -4,11 +4,17 @@ namespace LesAutres\SiteBundle\Controller;
 
 use LesAutres\SiteBundle\Controller\DefaultController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class FeedController extends DefaultController
 {
-    public function eventsAction()
+    public function eventsAction($type)
     {
+        if($type != "atom")
+        {
+            throw $this->createNotFoundException('La page demandée n\'existe pas');
+        }
+        
         $em = $this->getDoctrine()->getEntityManager();
         
         $events = $this->getDoctrine()
@@ -16,13 +22,17 @@ class FeedController extends DefaultController
             ->findAll()
         ;
         
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/'.$type.'+xml');
+        $response->sendHeaders();
+        
         return $this->render(
-            'LesAutresSiteBundle:Feed:events.atom.twig',
+            'LesAutresSiteBundle:Feed:events.'.$type.'.twig',
             array(
                 'events' => $events,
-                'lastUpdated' => $em->getRepository('LesAutresSiteBundle:Event')->getLatestEvent()->getCreatedAt()->format(DATE_ATOM),
-                'feedId' => sha1($this->get('router')->generate('homepage', array('_format'=> 'atom'), true)),
-            )
+                'lastUpdated' => $em->getRepository('LesAutresSiteBundle:Event')->getLatestEvent()->getCreatedAt(),
+            ),
+            $response
         );
     }
 }

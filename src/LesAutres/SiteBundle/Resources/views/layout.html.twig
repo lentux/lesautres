@@ -7,7 +7,7 @@
         <meta name="description" content="La Compagnie des Autres" />
         <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
         <title>{{ title }} - la Compagnie des Autres</title>
-        <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events_atom') }}" />
+        <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
         <!-- <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="" /> -->
         
         <!-- css -->

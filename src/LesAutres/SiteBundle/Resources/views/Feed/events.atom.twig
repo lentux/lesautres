@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>la Compagnie des Autres</title>
     <subtitle>théâtre professionnel en Provence</subtitle>
-    <link href="{{ url('feed_events_atom') }}" rel="self"/>
+    <link href="{{ url('feed_events', {'type': 'atom'}) }}" rel="self"/>
     <link href="{{ url('homepage') }}"/>
-    <updated>{{ lastUpdated }}</updated>
+    <updated>{{ lastUpdated.format(constant('DATE_ATOM')) }}</updated>
     <author><name>la Compagnie des Autres</name></author>
-    <id>{{ feedId }}</id>
+    <id>{{ url('homepage') }}</id>
     {% for event in events %}
         <entry>
             <title>{{ event }}</title>
@@ -17,6 +17,8 @@
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <div>
                     <p>{{ event.description|raw }}</p>
+                    <h2>Spectacle</h2>
+                    <p>{{ event.show }}</p>
                     <h2>Lieu</h2>
                     <p>
                         {{ event.place }}<br/>

@@ -18,6 +18,6 @@ show:
     pattern:  /spectacle/{slug}
     defaults: { _controller: LesAutresSiteBundle:Browse:show }
 
-feed_events_atom:
-    pattern:  /evenements/atom
+feed_events:
+    pattern:  /evenements/{type}
     defaults: { _controller: LesAutresSiteBundle:Feed:events }
