@@ -1,4 +1,9 @@
-{% extends 'LesAutresSiteBundle::layout.html.twig' %}
+{% if isMobile() %}
+    {% set parent = 'LesAutresSiteBundle::mobile.html.twig' %}
+{% else %}
+    {% set parent = 'LesAutresSiteBundle::layout.html.twig' %}
+{% endif %}
+{% extends parent %}
 
 {% block content %}
     <h1>la Compagnie des Autres</h1>

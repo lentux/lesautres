@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        
+        <!-- meta -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="La Compagnie des Autres" />
+        <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
+        <title>{{ title }} - la Compagnie des Autres</title>
+        <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="{{ path('feed_events', {'type': 'rss'}) }}" />
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/mobile.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/page.css') }}" />
+        
+        <!-- javascript -->
+        <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/init.js') }}"></script>
+        
+    </head>
+    <body>
+        <!-- begin google analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41036168-1', 'lesautres.org');
+            ga('send', 'pageview');
+        </script>
+        <!-- end google analytics -->
+        
+        <div class="page">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+        {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
+        {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
+    </body>
+</html>

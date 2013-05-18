@@ -22,6 +22,7 @@ class BrowseController extends DefaultController
             'LesAutresSiteBundle:Browse:index.html.twig',
             array(
                 'title' => 'Accueil',
+                'keywords' => "compagnie, compagnie des autres, théâtre, théâtre forum, ateliers, formation, création, professionnel, spectacles",
                 'menu_underline_slug' => 'accueil',
             )
         );
