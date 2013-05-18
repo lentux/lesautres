@@ -3,6 +3,7 @@
 namespace LesAutres\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -75,6 +76,45 @@ class DefaultController extends Controller
                 'web_dir' => $images_web_dir,
                 'images' => $images,
             )
+        );
+    }
+    
+    
+    
+    public function sitemapAction()
+    {
+        $urls = array(
+            "http://www.lesautres.org/",
+        );
+        
+        $pages = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Page')
+            ->findAll()
+        ;
+        foreach($pages as $page)
+        {
+            $urls[] = "http://www.lesautres.org/".$page->getSlug();
+        }
+        
+        $shows = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Show')
+            ->findAll()
+        ;
+        foreach($shows as $show)
+        {
+            $urls[] = "http://www.lesautres.org/spectacle/".$show->getSlug();
+        }
+        
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/xml');
+        $response->sendHeaders();
+        
+        return $this->render(
+            'LesAutresSiteBundle:Default:sitemap.xml.twig',
+            array(
+                'urls' => $urls,
+            ),
+            $response
         );
     }
 }

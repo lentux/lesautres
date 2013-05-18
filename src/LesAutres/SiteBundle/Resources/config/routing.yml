@@ -6,6 +6,10 @@ admin:
     pattern:  /admin
     defaults: { _controller: LesAutresSiteBundle:Admin:index }
 
+sitemap:
+    pattern:  /sitemap.xml  
+    defaults: { _controller: LesAutresSiteBundle:Default:sitemap }
+
 page:
     pattern:  /{slug}
     defaults: { _controller: LesAutresSiteBundle:Browse:page }
@@ -13,7 +17,3 @@ page:
 show:
     pattern:  /spectacle/{slug}
     defaults: { _controller: LesAutresSiteBundle:Browse:show }
-
-#date:
-#    pattern:  /date/{day}/{month}/{year}
-#    defaults: { _controller: LesAutresSiteBundle:Browse:date }
