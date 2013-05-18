@@ -49,7 +49,7 @@ class PageAdmin extends Admin
                 'keywords',
                 'text',
                 array(
-                    'label'  => "Mots-clés",
+                    'label'  => "Mots-clés (une dizaine, séparés par une virgule)",
                     'required' => false,
                 )
             )
