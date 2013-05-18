@@ -1,0 +1,33 @@
+/*
+ * site
+ */
+
+body {
+    background: url("/images/background/body.png") repeat scroll 0 0 transparent;
+}
+
+#scrollingtext,
+.tickercontainer,
+.agenda,
+.slideshow,
+.leftcolumn
+{
+    display: none;
+}
+
+.rightcolumn div.page,
+.rightcolumn
+{
+    width: 100%;
+    margin: 0;
+    float: none;
+    position: relative;
+    box-shadow: none;
+}
+
+.rightcolumn div.title {
+    margin: 10px auto 30px;
+    text-align: center;
+    color: #ABABAB;
+    font-size: 16px;
+}

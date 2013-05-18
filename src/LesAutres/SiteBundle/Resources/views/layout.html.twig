@@ -6,16 +6,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content="La Compagnie des Autres" />
         <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
+        <meta name="viewport" content="width=device-width"/>
         <title>{{ title }} - la Compagnie des Autres</title>
         <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
         <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="{{ path('feed_events', {'type': 'rss'}) }}" />
         
         <!-- css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/layout.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/page.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/li-scroller.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/print.css') }}" media="print" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/css/main.css') }}" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/css/page.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('/css/layout.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('/css/li-scroller.css') }}" />
+        <link rel="stylesheet" type="text/css" media="handheld" href="{{ asset('/css/mobile.css') }}" />
+        <link rel="stylesheet" type="text/css" media="print" href="{{ asset('/css/print.css') }}" />
         
         <!-- javascript -->
         <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
