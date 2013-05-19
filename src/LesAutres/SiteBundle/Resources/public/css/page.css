@@ -47,9 +47,8 @@ div.error {
 
 
 div.social {
-    float: right;
     font-size: 0;
-    padding: 5px;
+    padding: 0 10px;
 }
 
 div.social img {
@@ -101,10 +100,12 @@ div.googlemaps {
     float: right;
 }
 
-div.googlemaps iframe {
+iframe {
     border: none;
     scrolling: no;
     frameborder: 0;
     marginheight: 0;
     marginwidth: 0;
+    overflow: hidden;
+    display: inline-block;
 }

@@ -1,35 +1,12 @@
 <div class="social">
     
-    <!-- Javascript -->
-    <script>
-        function fbs_click()
-        {
-            u=location.href;
-            t=document.title;
-            window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');
-            return false;
-        }
-        
-        function gps_click()
-        {
-            window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-            return false;
-        }
-    </script>
-    
     <!-- Facebook -->
-    <a rel="nofollow" href="http://www.facebook.com/share.php?u={{ url }}" onclick="return fbs_click()" title="Partager sur Facebook" target="_blank">
-        <img width="32" height="32" alt="Partager sur Facebook" src="/images/icons/facebook.png">
-    </a>
+    <iframe seamless width="100" height="21" src="https://www.facebook.com/plugins/like.php?href={{ url }}&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21" allowTransparency="true"></iframe>
     
     <!-- Twitter -->
-    <a href="http://twitter.com/home?status={{ url }}" title="Partager sur Twitter" target="_blank">
-        <img width="32" height="32" alt="Partager sur Twitter" src="/images/icons/twitter.png">
-    </a>
+    <iframe seamless width="100" height="21" src="https://platform.twitter.com/widgets/tweet_button.html?url={{ url }}&amp;via=la%20Compagnie%20des%20Autres" allowtransparency="true"></iframe>
     
     <!-- Google + -->
-    <a target="_blank" href="https://plus.google.com/share?url={{ url }}" onclick="return gps_click()" title="Partager sur Google +">
-        <img width="32" height="32" alt="Partager sur Google+" src="/images/icons/googleplus.png">
-    </a>
+    <iframe seamless width="100" height="21" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url={{ url }}&amp;parent={{ url }}" allowtransparency="true" title="+1"></iframe>
     
 </div>

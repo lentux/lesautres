@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="show_infos">
-        {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('show', {'slug': show.slug})}) }}<br/>
         {% if image %}<a href="{{ image.webPath }}" target="_blank"><img src="{{ image.thumbnailWebPath }}" width="150" height="225" alt="Illustration {{ show.title }}" class="picture" /></a><br/>{% endif %}
         {% if pdf %}<div class="center"><a href="{{ pdf.webPath }}" class="dossier" title="Dossier PDF"><img width="16" height="16" src="/images/icons/pdf.png" alt="Dossier PDF" />&nbsp;&nbsp;&nbsp;Dossier</a></div>{% endif %}
     </div>
     <h1>{{ title }}</h1>
+    {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('show', {'slug': show.slug})}) }}<br/>
     {% if show.summary %}<h3>{{ show.summary }}</h3>{% endif %}
     {% if show.duration or show.actorCount or show.masterCount or show.playletCount %}
         <ul>
