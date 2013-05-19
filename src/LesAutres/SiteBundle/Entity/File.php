@@ -101,6 +101,24 @@ class File
         return ($this->mimeType == "image/jpeg" || $this->mimeType == "image/jpg" || $this->mimeType == "image/png");
     }
     
+    public function generateThumbnail()
+    {
+        if($this->isImage())
+        {
+            global $kernel;
+            
+            if ('AppCache' == get_class($kernel)) {
+                $kernel = $kernel->getKernel();
+            }
+            
+            $kernel->getContainer()->get('image.handling')
+                ->open($this->getAbsolutePath())
+                ->zoomCrop(150, 225)
+                ->save($this->getThumbnailAbsolutePath())
+            ;
+        }
+    }
+    
     
     
     
@@ -142,6 +160,12 @@ class File
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+        
+        // generate thumbnail
+        if($this->isImage())
+        {
+            $this->generateThumbnail();
+        }
     }
     
     public function getAbsolutePath()

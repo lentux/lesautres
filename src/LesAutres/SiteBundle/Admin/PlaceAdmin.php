@@ -15,6 +15,12 @@ class PlaceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'name',
                 'text',
@@ -61,6 +67,7 @@ class PlaceAdmin extends Admin
                     'label'  => "Département",
                 )
             )
+            ->end()
         ;
     }
 

@@ -33,6 +33,9 @@ class AppKernel extends Kernel
             
             // TinyMCE
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            
+            // Manipulation d'images
+            new Gregwar\ImageBundle\GregwarImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

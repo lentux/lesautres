@@ -15,6 +15,12 @@ class DateAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'date',
                 'datetime',
@@ -22,6 +28,7 @@ class DateAdmin extends Admin
                     'label'  => "Date",
                 )
             )
+            ->end()
         ;
     }
 

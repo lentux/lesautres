@@ -15,16 +15,12 @@ class FileAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            /*->add(
-                'show',
-                'entity',
+            ->with(
+                'Général',
                 array(
-                    'class' => 'LesAutresSiteBundle:Show',
-                    'query_builder' => function($repository) { return $repository->createQueryBuilder('s')->orderBy('s.id', 'ASC'); },
-                    'label'  => "Spectacle",
-                    'required' => false,
+                    'description' => "",
                 )
-            )*/
+            )
             ->add(
                 'path',
                 'text',
@@ -58,6 +54,7 @@ class FileAdmin extends Admin
                     'required' => false,
                 )
             )
+            ->end()
         ;
     }
     

@@ -15,6 +15,12 @@ class ShowAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'title',
                 'text',
@@ -107,6 +113,7 @@ class ShowAdmin extends Admin
                     'inline' => 'table',
                 )
             )
+            ->end()
         ;
     }
     

@@ -15,6 +15,12 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'username',
                 'text',
@@ -43,6 +49,7 @@ class UserAdmin extends Admin
                     'label' => "Email"
                 )
             )
+            ->end()
         ;
     }
 

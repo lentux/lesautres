@@ -15,6 +15,12 @@ class PageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'title',
                 'text',
@@ -53,6 +59,7 @@ class PageAdmin extends Admin
                     'required' => false,
                 )
             )
+            ->end()
         ;
     }
 

@@ -19,6 +19,12 @@ class EventAdmin extends Admin
         //$session = $this->getConfigurationPool()->getContainer()->get('request')->getSession();
         
         $formMapper
+            ->with(
+                'Général',
+                array(
+                    'description' => "",
+                )
+            )
             ->add(
                 'title',
                 'text',
@@ -67,6 +73,7 @@ class EventAdmin extends Admin
                     'inline' => 'table',
                 )
             )
+            ->end()
         ;
     }
     
