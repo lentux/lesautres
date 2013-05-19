@@ -100,3 +100,11 @@ div.googlemaps {
     margin: 10px;
     float: right;
 }
+
+div.googlemaps iframe {
+    border: none;
+    scrolling: no;
+    frameborder: 0;
+    marginheight: 0;
+    marginwidth: 0;
+}
