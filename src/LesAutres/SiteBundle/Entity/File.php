@@ -153,6 +153,16 @@ class File
     {
         return '/'.$this->getUploadDir().'/'.$this->path;
     }
+    
+    public function getThumbnailAbsolutePath()
+    {
+        return $this->getUploadRootDir().'/thumbnail/'.$this->path;
+    }
+
+    public function getThumbnailWebPath()
+    {
+        return '/'.$this->getUploadDir().'/thumbnail/'.$this->path;
+    }
 
     protected function getUploadRootDir()
     {
