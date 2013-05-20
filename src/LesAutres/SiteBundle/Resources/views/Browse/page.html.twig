@@ -2,11 +2,13 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('page', {'slug': page.slug})}) }}<br/>
+    {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('page', {'slug': page.slug})}) }}
     {{ page.text|raw }}
-    {% if page.shows %}
+    {% if count(page.shows) > 0 %}
         {% for show in page.shows %}
             {{ include('LesAutresSiteBundle:Default:show.html.twig', {'show': show}) }}
         {% endfor %}
+    {% else %}
+        {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('page', {'slug': page.slug})}) }}
     {% endif %}
 {% endblock %}

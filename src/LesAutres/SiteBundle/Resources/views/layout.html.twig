@@ -56,6 +56,11 @@
             <!-- begin left column -->
             <div class="leftcolumn">
                 <img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="Logo puzzle" class="logo" />
+                <div class="social_links">
+                    <a href="https://www.facebook.com/pages/Compagnie-des-Autres/525805364134992" target="_blank" title="Facebook"><img width="36" height="36" src="/images/icons/facebook.png" alt="Lien Facebook" /></a>
+                    <a href="https://twitter.com/cielesautres" target="_blank" title="Twitter"><img width="36" height="36" src="/images/icons/twitter.png" alt="Lien Twitter" /></a>
+                    <a href="{{ path('feed_events', {'type': 'atom'}) }}" title="Flux Atom"><img width="36" height="36" src="/images/icons/rss.png" alt="Flux Atom" /></a>
+                </div>
                 {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
                 {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
                 <div class="infos">

@@ -36,6 +36,11 @@ body {
     padding: 10px 2px;
 }
 
+.leftcolumn div.social_links {
+    margin: 10px;
+    text-align: center;
+}
+
 .leftcolumn ul.menu {
     background: none repeat scroll 0 0 #FCBC7C;
     color: white;
