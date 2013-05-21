@@ -7,21 +7,18 @@
         <meta name="description" content="{% if description is defined %}{{ description }}{% endif %}" />
         <meta name="keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}" />
         <meta name="viewport" content="width=device-width"/>
-        <title>{{ title }} - la Compagnie des Autres</title>
-        <link rel="alternate" type="application/atom+xml" title="Flux atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
+        <title>{% block title %}{{ title }}{% endblock %} - la Compagnie des Autres</title>
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
         <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="{{ path('feed_events', {'type': 'rss'}) }}" />
         
         <!-- css -->
         <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/css/main.css') }}" />
-        <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/css/page.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 640px)" href="{{ asset('/css/layout.css') }}" />
-        <link rel="stylesheet" type="text/css" media="screen and (min-width: 640px)" href="{{ asset('/css/li-scroller.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 640px)" href="{{ asset('/css/mobile.css') }}" />
         <link rel="stylesheet" type="text/css" media="print" href="{{ asset('/css/print.css') }}" />
         
         <!-- javascript -->
         <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/jquery.li-scroller.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/jquery.slideshow.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/init.js') }}"></script>
         
@@ -55,11 +52,11 @@
             
             <!-- begin left column -->
             <div class="leftcolumn">
-                <img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="Logo puzzle" class="logo" />
+                <a href="{{ path('homepage') }}" title="Vers la page d'accueil"><img src="/images/logo/logo_puzzle.png" width="175" height="161" alt="Logo puzzle" class="logo" /></a>
                 <div class="social_links">
                     <a href="https://www.facebook.com/pages/Compagnie-des-Autres/525805364134992" target="_blank" title="Facebook"><img width="36" height="36" src="/images/icons/facebook.png" alt="Lien Facebook" /></a>
                     <a href="https://twitter.com/cielesautres" target="_blank" title="Twitter"><img width="36" height="36" src="/images/icons/twitter.png" alt="Lien Twitter" /></a>
-                    <a href="{{ path('feed_events', {'type': 'atom'}) }}" title="Flux Atom"><img width="36" height="36" src="/images/icons/rss.png" alt="Flux Atom" /></a>
+                    <a href="{{ path('feed_events', {'type': 'atom'}) }}" title="Flux RSS/Atom des événements"><img width="36" height="36" src="/images/icons/rss.png" alt="Flux Atom" /></a>
                 </div>
                 {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
                 {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
@@ -68,7 +65,7 @@
                         Le {{ today() }}
                     </p>
                     <p>
-                        <img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="Logo compagnie" />
+                        <a href="{{ path('homepage') }}" title="Vers la page d'accueil"><img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="Logo compagnie" /></a>
                     </p>
                     <p>
                         <span class="bold">PROFESSIONNELS DE&nbsp;THÉÂTRE</span><br/>
@@ -84,9 +81,12 @@
             
             <!-- begin right column -->
             <div class="rightcolumn">
-                <ul id="scrollingtext">
+                <!--<ul id="scrollingtext">
                     <li><span>Du 9 au 31 juillet Avignon festival Off - Diatribe amoureuse de Gabriel Garcia Marquez à l'Espace du Pont d'Avignon, jours impairs à 16h</span></li>
-                </ul>
+                </ul>-->
+                <div class="scroller">
+                    <p class="marquee">Du 9 au 31 juillet - Avignon festival Off - Diatribe amoureuse de Gabriel Garcia Marquez à l'Espace du Pont d'Avignon, jours impairs à 16h</p>
+                </div>
                 <div class="title">
                     <span class="bold">la Compagnie des Autres, théâtre professionnel en Provence</span><br/>
                     <span class="italic">formation  diffusion  jeu  création  mise en scène  joker animation</span>

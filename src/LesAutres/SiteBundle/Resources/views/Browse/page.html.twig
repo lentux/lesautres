@@ -4,8 +4,8 @@
     <h1>{{ title }}</h1>
     {{ include('LesAutresSiteBundle:Default:social.html.twig', {'url': app.request.scheme ~ '://' ~ app.request.httpHost ~ path('page', {'slug': page.slug})}) }}
     {{ page.text|raw }}
-    {% if count(page.shows) > 0 %}
-        {% for show in page.shows %}
+    {% if count(shows) > 0 %}
+        {% for show in shows %}
             {{ include('LesAutresSiteBundle:Default:show.html.twig', {'show': show}) }}
         {% endfor %}
     {% else %}

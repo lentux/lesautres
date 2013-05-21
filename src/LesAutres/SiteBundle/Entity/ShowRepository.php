@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ShowRepository extends EntityRepository
 {
+    public function getShowsForPage(Page $page)
+    {
+        $query = $this->createQueryBuilder('s')
+            ->where('s.page = :page')
+            ->setParameter('page', $page)
+            ->orderBy('s.createdAt', 'DESC')
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+    }
 }

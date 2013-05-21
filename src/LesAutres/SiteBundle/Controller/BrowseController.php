@@ -27,6 +27,11 @@ class BrowseController extends DefaultController
     
     public function pageAction(Page $page)
     {
+        $shows = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Show')
+            ->getShowsForPage($page)
+        ;
+        
         return $this->render(
             'LesAutresSiteBundle:Browse:page.html.twig',
             array(
@@ -35,6 +40,7 @@ class BrowseController extends DefaultController
                 'keywords' => $page->getKeywords(),
                 'menu_underline_slug' => $page->getSlug(),
                 'page' => $page,
+                'shows' => $shows,
             )
         );
     }
@@ -50,6 +56,7 @@ class BrowseController extends DefaultController
                 'isPdf' => true,
             ))
         ;
+        
         $image = $this->getDoctrine()
             ->getRepository('LesAutresSiteBundle:File')
             ->findOneBy(array(
