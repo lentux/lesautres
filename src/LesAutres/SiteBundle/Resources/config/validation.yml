@@ -1,0 +1,7 @@
+LesAutres\SiteBundle\Entity\Contact:
+    properties:
+        from:
+            - NotBlank: { message: "Veuillez indiquer votre email." }
+            - Email: { message: "Veuillez indiquer une adresse email valide." }
+        message:
+            - NotBlank: { message: "Veuillez laisser un message." }

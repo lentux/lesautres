@@ -155,6 +155,10 @@ body {
     margin: 10px 0;
 }
 
+.rightcolumn div.slideshow img {
+    display: none;
+}
+
 
 
 /*

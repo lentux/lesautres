@@ -1,0 +1,12 @@
+{% extends 'LesAutresSiteBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Nous contacter</h1>
+    <form action="{{ path('contact_form') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        {{ form_rest(form) }}
+        <div class="submit">
+            <input type="submit" value="Envoyer" title="Envoyer" />
+        </div>
+    </form>
+{% endblock %}

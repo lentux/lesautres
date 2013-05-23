@@ -23,6 +23,8 @@
 .right { text-align: right; }
 .float_left { float: left; }
 .float_right { float: right; }
+.clear { clear: both; }
+.hidden { display: none; }
 
 iframe {
     border: none;
@@ -127,6 +129,16 @@ div.frame {
     clear: both;
 }
 
+div.frame .place {
+    float: right;
+    width: 220px;
+}
+
+div.frame .date {
+    float: left;
+    width: 286px;
+}
+
 div.frame .show_link {
     float: right;
     margin: 10px;
@@ -140,3 +152,45 @@ div.googlemaps {
     margin: 10px;
     float: right;
 }
+
+
+
+form {
+    text-align: center;
+}
+
+form div#contact {
+    text-align: left;
+    width: 420px;
+    display: inline-block;
+}
+
+form div.submit {
+    text-align: right;
+    width: 420px;
+    display: inline-block;
+}
+
+form div#contact div {
+    padding: 10px;
+}
+
+form div#contact label {
+    display: block;
+}
+
+form div#contact ul {
+    color: red;
+    margin: 0;
+}
+
+form div#contact input,
+form div#contact textarea {
+    width: 400px;
+}
+
+form div.submit input {
+    margin: 10px;
+}
+
+

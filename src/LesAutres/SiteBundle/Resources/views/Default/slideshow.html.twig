@@ -1,5 +1,5 @@
 {% set count = 1 %}
 {% for image in images %}
-    <img src="{{ web_dir }}/{{ image }}" alt="Image diaporama {{ count }}" width="250" height="375" style="{% if count > 1 %}display:none;{% endif %}" />
+    <img src="{{ web_dir }}/{{ image }}" alt="Image diaporama {{ count }}" width="250" height="375" id="slideshow_img_{{ count }}" />
     {% set count = count + 1 %}
 {% endfor %}

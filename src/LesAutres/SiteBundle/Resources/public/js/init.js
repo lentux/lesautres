@@ -7,6 +7,7 @@ $(function(){
     });
     
     // Afficher le diaporama
+    $('#slideshow_img_1').show();
     $('#slideshow').slideshow({
         timeout: 4000,
         fadetime: 1000,

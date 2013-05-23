@@ -83,10 +83,13 @@ class DefaultController extends Controller
     
     public function sitemapAction()
     {
+        // pages statiques
         $urls = array(
             "http://www.lesautres.org/",
+            "http://www.lesautres.org/nous-contacter",
         );
         
+        // pages
         $pages = $this->getDoctrine()
             ->getRepository('LesAutresSiteBundle:Page')
             ->findAll()
@@ -96,6 +99,7 @@ class DefaultController extends Controller
             $urls[] = "http://www.lesautres.org/".$page->getSlug();
         }
         
+        // fiches spectacles
         $shows = $this->getDoctrine()
             ->getRepository('LesAutresSiteBundle:Show')
             ->findAll()
@@ -105,6 +109,7 @@ class DefaultController extends Controller
             $urls[] = "http://www.lesautres.org/spectacle/".$show->getSlug();
         }
         
+        // réponse
         $response = new Response();
         $response->headers->set('Content-Type', 'text/xml');
         $response->sendHeaders();

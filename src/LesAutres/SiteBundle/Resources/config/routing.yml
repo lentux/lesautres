@@ -6,6 +6,14 @@ admin:
     pattern:  /admin
     defaults: { _controller: LesAutresSiteBundle:Admin:index }
 
+contact_form:
+    pattern:  /nous-contacter
+    defaults: { _controller: LesAutresSiteBundle:Contact:form }
+
+contact_confirm:
+    pattern:  /nous-contacter/confirmation
+    defaults: { _controller: LesAutresSiteBundle:Contact:confirm }
+
 sitemap:
     pattern:  /sitemap.xml
     defaults: { _controller: LesAutresSiteBundle:Default:sitemap }

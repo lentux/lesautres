@@ -11,16 +11,19 @@
         <link rel="alternate" type="application/atom+xml" title="Flux Atom des événements" href="{{ path('feed_events', {'type': 'atom'}) }}" />
         <link rel="alternate" type="application/rss+xml" title="Flux RSS des événements" href="{{ path('feed_events', {'type': 'rss'}) }}" />
         
+        <!-- dublin core -->
+        <meta name="dcterms.title" lang="fr" content="{{ title }}" />
+        <meta name="dcterms.creator" content="Compagnie des Autres" />
+        <meta name="dcterms.description" lang="fr" content="{% if description is defined %}{{ description }}{% endif %}" />
+        <meta name="dcterms.publisher" content="Compagnie des Autres" />
+        <meta name="dcterms.language" content="fr-FR" />
+        <meta name="dcterms.format" content="text/html" />
+        
         <!-- css -->
         <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/css/main.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 640px)" href="{{ asset('/css/layout.css') }}" />
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 640px)" href="{{ asset('/css/mobile.css') }}" />
         <link rel="stylesheet" type="text/css" media="print" href="{{ asset('/css/print.css') }}" />
-        
-        <!-- javascript -->
-        <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/jquery.slideshow.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/init.js') }}"></script>
         
         <!-- google analytics -->
         <script>
@@ -60,20 +63,26 @@
                 </div>
                 {% if not menu_underline_slug is defined %}{% set menu_underline_slug = '' %}{% endif %}
                 {{ render(controller('LesAutresSiteBundle:Default:menu', {'menu_underline_slug': menu_underline_slug})) }}
-                <div class="infos">
+                <div class="infos" itemscope itemtype="http://schema.org/Organization">
                     <p>
                         Le {{ today() }}
                     </p>
                     <p>
-                        <a href="{{ path('homepage') }}" title="Vers la page d'accueil"><img src="/images/logo/logo_compagnie.png" width="150" height="107" alt="Logo compagnie" /></a>
+                        <span itemprop="name" class="hidden">Compagnie des Autres</span>
+                        <a href="{{ path('homepage') }}" title="Vers la page d'accueil">
+                            <img itemprop="logo" src="/images/logo/logo_compagnie.png" width="150" height="107" alt="Compagnie des Autres" />
+                        </a>
                     </p>
-                    <p>
+                    <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                         <span class="bold">PROFESSIONNELS DE&nbsp;THÉÂTRE</span><br/>
-                        77, rue Cottier<br/>
-                        84 200 Carpentras<br/>
+                        <span itemprop="streetAddress">77, rue Cottier</span><br/>
+                        <span itemprop="postalCode">84 200</span>
+                        <span itemprop="addressLocality">Carpentras</span><br/>
+                        <span itemprop="addressRegion" class="hidden">Provence-Alpes-Côte-d'Azur</span>
+                        <span itemprop="addressCountry" class="hidden">France</span>
                     </p>
                     <p>
-                        <span class="m" style="cielesautres:wanadoo.fr">email</span>
+                        <a href="{{ path('contact_form') }}">Nous contacter</a>
                     </p>
                 </div>
             </div>
@@ -112,5 +121,11 @@
             <!-- end footer -->
             
         </div>
+        
+        <!-- javascript -->
+        <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/jquery.slideshow.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/init.js') }}"></script>
+        
     </body>
 </html>
