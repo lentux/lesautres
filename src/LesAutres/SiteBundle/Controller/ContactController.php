@@ -20,6 +20,7 @@ class ContactController extends DefaultController
             $form->bind($request);
             if ($form->isValid())
             {
+                $contact->setSubject("Demande de contact");
                 $contact->send();
                 
                 return $this->redirect($this->generateUrl('contact_confirm'));
@@ -30,8 +31,8 @@ class ContactController extends DefaultController
             'LesAutresSiteBundle:Contact:form.html.twig',
             array(
                 'title' => "Nous contacter",
-                'description' => "",
-                'keywords' => "",
+                'description' => "Pour contacter la Compagnie des Autres, veuillez remplir le formulaire.",
+                'keywords' => "contact, message",
                 'form' => $form->createView(),
             )
         );

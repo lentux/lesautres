@@ -52,10 +52,10 @@ class Contact
         }
         
         $email = \Swift_Message::newInstance()
-            ->setSubject("[Contact depuis le site] ".$this->subject)
+            ->setSubject("[www.lesautres.org] ".$this->subject)
             ->setFrom($this->from)
             ->setTo($kernel->getContainer()->getParameter('contact_email'))
-            ->setBody($this->message)
+            ->setBody("De ".$this->name." : ".$this->message)
         ;
         
         $kernel->getContainer()->get('mailer')->send($email);
