@@ -1,9 +1,11 @@
-<div class="frame">
+<div class="frame" itemscope itemtype="http://schema.org/TheaterEvent">
     <div class="place">
-        <p class="right">
-            <span class="bold">{{ event.place }}</span><br/>
-            {{ event.place.street }}<br/>
-            {{ event.place.zipcode }} {{ event.place.city }}
+        <p class="right" itemprop="location" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="name" class="bold">{{ event.place }}</span><br/>
+            <span itemprop="streetAddress">{{ event.place.street }}</span><br/>
+            <span itemprop="postalCode">{{ event.place.zipcode }}</span>
+            <span itemprop="addressLocality">{{ event.place.city }}</span>
+            <span itemprop="addressCountry" class="hidden">France</span>
         </p>
         <div class="googlemaps">
             <iframe seamless width="200" height="200" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q={{ event.place.street|replace({' ': '%20'}) }},%20{{ event.place.zipcode }}%20{{ event.place.city|replace({' ': '%20'}) }},%20France&amp;ie=UTF8&amp;z=14&amp;t=m&amp;iwloc=near&amp;output=embed"></iframe>
@@ -12,13 +14,13 @@
     <div class="date">
         {% if event.title or event.description %}
             <p>
-                {% if event.title %}<span class="bold">{{ event.title }}</span><br/>{% endif %}
-                {{ event.description }}
+                {% if event.title %}<span itemprop="name" class="bold">{{ event.title }}</span><br/>{% endif %}
+                {% if event.description %}<span itemprop="description">{{ event.description }}</span>{% endif %}
             </p>
         {% endif %}
         <ul>
             {% for date in event.dates %}
-                <li>{{ date }}</li>
+                <li>{{ date }}<span itemprop="startDate" class="hidden">{{ date.date.format(constant('DATE_ISO8601')) }}</span></li>
             {% endfor %}
         </ul>
     </div>
