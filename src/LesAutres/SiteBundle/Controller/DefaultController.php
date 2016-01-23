@@ -81,6 +81,25 @@ class DefaultController extends Controller
     
     
     
+    public function scrollingTextAction()
+    {
+        $option = $this->getDoctrine()
+            ->getRepository('LesAutresSiteBundle:Setting')
+            ->findOneBy(array('key' => 'scrolling_text'))
+        ;
+        
+        $scrolling_text = $option->getValue();
+        
+        return $this->render(
+            'LesAutresSiteBundle:Default:string.html.twig',
+            array(
+                'string' => $scrolling_text,
+            )
+        );
+    }
+    
+    
+    
     public function sitemapAction()
     {
         // pages statiques
