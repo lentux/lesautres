@@ -20,7 +20,9 @@
     {% if count(show.events) >= 1 %}
         <h2>Prochaines représentations</h2>
         {% for event in show.events %}
-            {{ include('LesAutresSiteBundle:Default:event.html.twig', {'event': event}) }}
+            {% if count(event.datesAfterNow) > 0 %}
+                {{ include('LesAutresSiteBundle:Default:event.html.twig', {'event': event}) }}
+            {% endif %}
         {% endfor %}
     {% endif %}
 {% endblock %}

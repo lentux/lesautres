@@ -99,6 +99,19 @@ class Event
         }
     }
     
+    public function getDatesAfterNow() {
+        $dates_after_now = new ArrayCollection();
+        $now = new \DateTime();
+        
+        foreach ($this->dates as $date) {
+            if ($date->getDate() > $now) {
+                $dates_after_now[] = $date;
+            }
+        }
+        
+        return $dates_after_now;
+    }
+    
     
     
     

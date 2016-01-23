@@ -19,7 +19,7 @@
             </p>
         {% endif %}
         <ul>
-            {% for date in event.dates %}
+            {% for date in event.datesAfterNow %}
                 <li>{{ date }}<span itemprop="startDate" class="hidden">{{ date.date.format(constant('DATE_ISO8601')) }}</span></li>
             {% endfor %}
         </ul>
