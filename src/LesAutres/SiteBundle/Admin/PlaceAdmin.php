@@ -11,6 +11,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 class PlaceAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
+    protected $maxPerPage = 100;
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -41,6 +47,7 @@ class PlaceAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Adresse",
+                    'required' => false,
                 )
             )
             ->add(
@@ -48,6 +55,7 @@ class PlaceAdmin extends Admin
                 'number',
                 array(
                     'label'  => "Code postal",
+                    'required' => false,
                 )
             )
             ->add(
@@ -55,6 +63,7 @@ class PlaceAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Ville",
+                    'required' => false,
                 )
             )
             ->add(
@@ -65,6 +74,7 @@ class PlaceAdmin extends Admin
                     'query_builder' => function($repository) { return $repository->createQueryBuilder('d')->orderBy('d.id', 'ASC'); },
                     'preferred_choices' => $this->modelManager->findBy('LesAutres\SiteBundle\Entity\Departement', array('number' => '84')),
                     'label'  => "Département",
+                    'required' => false,
                 )
             )
             ->end()

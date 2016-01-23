@@ -11,6 +11,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 class EventAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
+    protected $maxPerPage = 100;
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -48,6 +54,7 @@ class EventAdmin extends Admin
                     'class' => 'LesAutresSiteBundle:Show',
                     'query_builder' => function($repository) { return $repository->createQueryBuilder('s')->orderBy('s.id', 'ASC'); },
                     'label'  => "Spectacle",
+                    'required' => false,
                 )
             )
             ->add(

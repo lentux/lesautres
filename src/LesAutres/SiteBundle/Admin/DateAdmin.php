@@ -11,6 +11,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 class DateAdmin extends Admin
 {
     protected $translationDomain = 'SonataPageBundle';
+    protected $maxPerPage = 100;
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
 
     protected function configureFormFields(FormMapper $formMapper)
     {
