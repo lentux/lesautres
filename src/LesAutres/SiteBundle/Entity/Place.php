@@ -43,6 +43,21 @@ class Place
      * @ORM\Column(type="string", length=32, nullable=true)
      */
     protected $city;
+    
+    /**
+     * @ORM\Column(type="string", length=32, nullable=true)
+     */
+    protected $latitude;
+    
+    /**
+     * @ORM\Column(type="string", length=32, nullable=true)
+     */
+    protected $longitude;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $zoom;
 
     /**
      * @ORM\Column(type="datetime", name="created_at")
@@ -79,6 +94,7 @@ class Place
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->events = new ArrayCollection();
+        $this->zoom = 17;
     }
     
     public function __toString()
@@ -90,6 +106,66 @@ class Place
         );
     }
     
+    
+    
+    
+    
+    
+    /**
+     * METHODS
+     */
+    
+    // function to geocode address, it will return false if unable to geocode address
+    public function geocode(){
+     
+        // url encode the address
+        $address = urlencode($this->street . ", " . $this->zipcode . " " . $this->city);
+         
+        // google map geocode api url
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+     
+        // get the json response
+        $resp_json = file_get_contents($url);
+         
+        // decode the json
+        $resp = json_decode($resp_json, true);
+     
+        // response status will be 'OK', if able to geocode given address 
+        if($resp['status'] === 'OK'){
+     
+            // get the important data
+            $latitude = $resp['results'][0]['geometry']['location']['lat'];
+            $longitude = $resp['results'][0]['geometry']['location']['lng'];
+             
+            // verify if data is complete
+            if($latitude && $longitude){
+             
+                // put the data in the array
+                $this->latitude = $latitude;
+                $this->longitude = $longitude;
+                
+                // get zipcode or city from response if empty
+                if(!$this->zipcode or !$this->city) {
+                    foreach($resp['results'][0]['address_components'] as $component) {
+                        if (!$this->zipcode and array_key_exists("postal_code",$component['types'])) {
+                            $this->zipcode = $component['long_name'];
+                        }
+                        if (!$this->city and array_key_exists("locality",$component['types'])) {
+                            $this->city = $component['long_name'];
+                        }
+                    }
+                }
+                
+                return true;
+                 
+            } else {
+                return false;
+            }
+             
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -324,5 +400,78 @@ class Place
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     * @return Place
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string 
+     */
+    public function getLatitude()
+    {
+        if (!$this->latitude) {
+            $this->geocode();
+        }
+
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     * @return Place
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set zoom
+     *
+     * @param integer $zoom
+     * @return Place
+     */
+    public function setZoom($zoom)
+    {
+        $this->zoom = $zoom;
+
+        return $this;
+    }
+
+    /**
+     * Get zoom
+     *
+     * @return integer 
+     */
+    public function getZoom()
+    {
+        return $this->zoom;
     }
 }

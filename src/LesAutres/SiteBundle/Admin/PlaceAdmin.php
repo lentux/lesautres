@@ -78,6 +78,37 @@ class PlaceAdmin extends Admin
                 )
             )
             ->end()
+            ->with(
+                'Carte',
+                array(
+                    'description' => "",
+                )
+            )
+            ->add(
+                'latitude',
+                'text',
+                array(
+                    'label'  => "Latitude",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'longitude',
+                'text',
+                array(
+                    'label'  => "Longitude",
+                    'required' => false,
+                )
+            )
+            ->add(
+                'zoom',
+                'number',
+                array(
+                    'label'  => "Zoom",
+                    'required' => false,
+                )
+            )
+            ->end()
         ;
     }
 
