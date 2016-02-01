@@ -37,6 +37,9 @@ class EventAdmin extends Admin
                 array(
                     'label'  => "Titre",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: Festival d'Avignon",
+                    ),
                 )
             )
             ->add(
@@ -45,6 +48,17 @@ class EventAdmin extends Admin
                 array(
                     'label'  => "Description",
                     'required' => false,
+                )
+            )
+            ->add(
+                'link',
+                'text',
+                array(
+                    'label'  => "Lien vers le site de l'événement",
+                    'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: http://www.festival-avignon.com",
+                    ),
                 )
             )
             ->add(
@@ -72,7 +86,7 @@ class EventAdmin extends Admin
                 'sonata_type_collection',
                 array(
                     'cascade_validation' => true,
-                    'label'  => "Dates",
+                    'label'  => "Dates (laisser l'heure à 0h00 pour ne pas définir d'heure)",
                     'required' => false,
                 ),
                 array(

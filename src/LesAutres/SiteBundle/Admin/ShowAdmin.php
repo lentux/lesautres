@@ -32,6 +32,9 @@ class ShowAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Titre",
+                    'attr' => array(
+                        'placeholder' => "ex: Aide aux Aidants",
+                    ),
                 )
             )
             ->add(
@@ -39,6 +42,9 @@ class ShowAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Slug",
+                    'attr' => array(
+                        'placeholder' => "ex: aide-aux-aidants",
+                    ),
                 )
             )
             ->add(
@@ -55,8 +61,11 @@ class ShowAdmin extends Admin
                 'duration',
                 'text',
                 array(
-                    'label'  => "Durée (en minutes)",
+                    'label'  => "Durée",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 1h30, 90 minutes",
+                    ),
                 )
             )
             ->add(
@@ -65,6 +74,9 @@ class ShowAdmin extends Admin
                 array(
                     'label'  => "Nombre de comédiens",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 3",
+                    ),
                 )
             )
             ->add(
@@ -73,6 +85,9 @@ class ShowAdmin extends Admin
                 array(
                     'label'  => "Nombre de meneurs de jeu",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 1",
+                    ),
                 )
             )
             ->add(
@@ -81,6 +96,9 @@ class ShowAdmin extends Admin
                 array(
                     'label'  => "Nombre de saynètes",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 2",
+                    ),
                 )
             )
             ->add(
@@ -89,6 +107,9 @@ class ShowAdmin extends Admin
                 array(
                     'label'  => "Résumé",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: Le sacrifice et l'isolement de l'aidant familial",
+                    ),
                 )
             )
             ->add(
@@ -104,6 +125,9 @@ class ShowAdmin extends Admin
                 array(
                     'label'  => "Mots-clés (une dizaine, séparés par une virgule)",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: théâtre forum, aide, aidants",
+                    ),
                 )
             )
             ->add(

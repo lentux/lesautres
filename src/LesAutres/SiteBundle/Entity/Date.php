@@ -53,6 +53,7 @@ class Date
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->date = new \DateTime();
+        $this->date->setTime(0, 0, 0);
     }
     
     public function __toString()
@@ -77,7 +78,7 @@ class Date
      */
     public function getFormatedDateTime($dayofweek = true)
     {
-        return $this->getFormatedDate($dayofweek)." à ".$this->getFormatedTime();
+        return $this->getFormatedDate($dayofweek).($this->getFormatedTime() === "00h00" ? "" : " à ".$this->getFormatedTime());
     }
     
     /**

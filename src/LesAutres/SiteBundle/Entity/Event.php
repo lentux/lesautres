@@ -30,6 +30,11 @@ class Event
     protected $description;
 
     /**
+     * @ORM\Column(type="string", length=256, nullable=true)
+     */
+    protected $link;
+
+    /**
      * @ORM\Column(type="datetime", name="created_at")
      */
     protected $createdAt;
@@ -300,5 +305,28 @@ class Event
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Event
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }

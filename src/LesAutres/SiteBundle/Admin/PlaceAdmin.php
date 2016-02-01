@@ -32,6 +32,9 @@ class PlaceAdmin extends Admin
                 'text',
                 array(
                     'label'  => "Nom",
+                    'attr' => array(
+                        'placeholder' => "ex: Compagnie des Autres",
+                    ),
                 )
             )
             ->add(
@@ -48,6 +51,9 @@ class PlaceAdmin extends Admin
                 array(
                     'label'  => "Adresse",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 77, rue Cottier",
+                    ),
                 )
             )
             ->add(
@@ -56,6 +62,9 @@ class PlaceAdmin extends Admin
                 array(
                     'label'  => "Code postal",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: 84200",
+                    ),
                 )
             )
             ->add(
@@ -64,6 +73,9 @@ class PlaceAdmin extends Admin
                 array(
                     'label'  => "Ville",
                     'required' => false,
+                    'attr' => array(
+                        'placeholder' => "ex: Carpentras",
+                    ),
                 )
             )
             ->add(

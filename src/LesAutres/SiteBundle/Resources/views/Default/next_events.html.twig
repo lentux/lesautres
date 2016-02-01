@@ -3,8 +3,20 @@
     {% if not (lastdate == date.formatedDate(false)) %}
         <h4>{{ date.formatedDate(false) }}</h4>
     {% endif %}
-    {% if date.event and date.event.show %}
-        <p>{{ date.formatedTime }} - <a href="{{ path('show', {'slug': date.event.show.slug}) }}">{{ date.event.show.title }}</a></p>
+    {% if date.event %}
+        <p>
+            {% if not (date.formatedTime == '00h00') %}{{ date.formatedTime }} - {% endif %}
+            {% if date.event.show %}
+                <a href="{{ path('show', {'slug': date.event.show.slug}) }}">
+                    {{ date.event.show.title }}
+                </a>
+            {% else %}
+                {% if date.event.link %}<a href="{{ date.event.link }}" target="_blank">{% endif %}
+                    {{ date.event.title }}
+                {% if date.event.link %}</a>{% endif %}
+                {% if date.event.description %}<br/>{{ date.event.description }}{% endif %}
+            {% endif %}
+        </p>
     {% endif %}
     {% set lastdate = date.formatedDate(false) %}
 {% endfor %}
