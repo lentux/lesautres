@@ -54,7 +54,7 @@ class Contact
         $email = \Swift_Message::newInstance()
             ->setSubject("[www.lesautres.org] ".$this->subject)
             ->setFrom($this->from)
-            ->setTo($kernel->getContainer()->getParameter('contact_email'))
+            ->setTo('cielesautres@wanadoo.fr')
             ->setBody("De ".$this->name." : ".$this->message)
         ;
         

@@ -5,8 +5,56 @@
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
 DirectoryIndex app.php
 
+# pages deplacees
+Redirect 301 /accueil /
+Redirect 301 /uploads/pdf/02_onfermeFiche.pdf /uploads/show/on-ferme/02_onfermeFiche.pdf
+Redirect 301 /uploads/pdf/15_1_2_3.pdf /uploads/show/1-2-3-la-tete-de-l-emploi/15_1_2_3.pdf
+Redirect 301 /autres-spectacles/prudence /spectacle/prudence
+Redirect 301 /uploads/pdf/14_situmaimes.pdf /uploads/show/si-tu-m-aimes/14_situmaimes.pdf
+Redirect 301 /uploads/pdf/fiche_JJ.pdf /uploads/show/john-et-joe/fiche_JJ.pdf
+#07/07/2013
+Redirect 301 /uploads/pdf/17_risques.pdf /uploads/show/reves-partis/17_risques.pdf
+Redirect 301 /nos-spectacles-forum/ados-j-ecoute /spectacle/ados-j-ecoute
+Redirect 301 /nos-spectacles-forum/non /spectacle/non
+Redirect 301 /autres-spectacles/un-caprice-a-de-musset /spectacle/un-caprice
+Redirect 301 /nos-spectacles-forum/1-2-3-la-tete-de-l-emploi /spectacle/1-2-3-la-tete-de-l-emploi
+Redirect 301 /nos-spectacles-forum/banc-public /spectacle/banc-public
+Redirect 301 /uploads/pdf/forum05_francky.pdf /uploads/show/qui-a-peur-de-qui-galere/forum05_francky.pdf
+Redirect 301 /uploads/pdf/forum03_bancpublic.pdf /uploads/show/banc-public/forum03_bancpublic.pdf
+Redirect 301 /autres-spectacles/john-joe /spectacle/john-et-joe
+Redirect 301 /nos-spectacles-forum/1-2-3-la-tete-au-carre /spectacle/1-2-3-la-tete-au-carre
+Redirect 301 /uploads/pdf/fiche_prudence.pdf /uploads/show/prudence/fiche_prudence.pdf
+Redirect 301 /uploads/pdf/13_perilenlaDemeure.pdf /uploads/show/peril-en-la-demeure/13_perilenlaDemeure.pdf
+Redirect 301 /uploads/pdf/forum18_nofuture.pdf /uploads/show/no-future-today/forum18_nofuture.pdf
+
+# pages supprimees
+#07/07/2013
+Redirect 301 /spectacle/undefined /
+Redirect 301 /nos-spectacles-forum/8eme-forum-public /
+Redirect 301 /video/non/1 /
+Redirect 301 /video/non/2 /
+Redirect 301 /video/1-2-3-la-tete-de-l-emploi/1 /
+Redirect 301 /video/1-2-3-la-tete-de-l-emploi/2 /
+Redirect 301 /video/non/undefined /
+Redirect 301 /video/prudence/undefined /
+Redirect 301 /video/ados-j-ecoute/1 /
+Redirect 301 /video/ados-j-ecoute/2 /
+Redirect 301 /video/ados-j-ecoute/3 /
+Redirect 301 /uploads/pdf/tractOFF_2011.pdf /
+Redirect 301 /page.php /
+Redirect 301 /nos-spectacles-forum/journee-portes-ouvertes /
+Redirect 301 /index.php /
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # 301
+    RewriteCond %{HTTP_HOST} !^www.lesautres.org$ [NC]
+    RewriteRule ^(.*)$ http://www.lesautres.org/$1 [R=301,L]
+
+    # Trailing slash
+    RewriteCond %{REQUEST_URI} ^(.+)/$
+    RewriteRule ^(.+)/$  /$1 [R=301,L]
 
     # Redirect to URI without front controller to prevent duplicate content
     # (with and without `/app.php`). Only do this redirect on the initial

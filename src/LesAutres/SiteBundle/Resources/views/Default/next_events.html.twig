@@ -16,6 +16,7 @@
                 {% if date.event.link %}</a>{% endif %}
                 {% if date.event.description %}<br/>{{ date.event.description }}{% endif %}
             {% endif %}
+            <br />{{ date.event.place.name }}, {{ date.event.place.city }}
         </p>
     {% endif %}
     {% set lastdate = date.formatedDate(false) %}
